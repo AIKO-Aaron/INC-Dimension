@@ -44,14 +44,16 @@ void graphics::Window::createContext() {
     printf("[INFO] Initialized GLEW: \n\tGL   Version: %s\n\tGLSL Version: %s\n", glGetString(GL_VERSION), glGetString(GL_SHADING_LANGUAGE_VERSION));
     SDL_GL_SetSwapInterval(1); // Enable Vsync for OpenGL
     
+    glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+    
     glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
+    glDepthFunc(GL_LESS);
 }
 
 graphics::Window::Window() {
     SDL_Init(SDL_INIT_VIDEO | SDL_VIDEO_OPENGL | SDL_INIT_TIMER);
     setupGL(); // set up the gl context
-    window = SDL_CreateWindow("3D", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+    window = SDL_CreateWindow("3D", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
     createContext(); // finally create the context
     renderer = new graphics::Renderer();
 }
@@ -60,7 +62,7 @@ void graphics::Window::run() {
     running = true;
     SDL_Event e;
     
-    graphics::Box *box = new graphics::Box(-0.5f, -1.0f, 0, 1, 1, 1);
+    graphics::Box *box = new graphics::Box(-0.5f, -0.5f, -0.5, 1, 1, 1);
     graphics::Shader *shader = graphics::loadFromFiles("assets/shaders/test.vert", "assets/shaders/test.frag");
 
     float angle = 0;
@@ -69,6 +71,7 @@ void graphics::Window::run() {
         while(SDL_PollEvent(&e)) {
             if(e.type == SDL_WINDOWEVENT) {
                 if(e.window.event == SDL_WINDOWEVENT_CLOSE) running = false;
+                else if(e.window.event == SDL_WINDOWEVENT_RESIZED) glViewport(0, 0, e.window.data1, e.window.data2);
             } else if(e.type == SDL_KEYDOWN) {
                 
             } else if(e.type == SDL_QUIT) {
