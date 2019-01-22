@@ -9,24 +9,30 @@
 #ifndef Window_hpp
 #define Window_hpp
 
-#ifdef __APPLE__
-#  include <GL/glew.h>
-#  include <SDL2/SDL_opengl.h>
-#  include <SDL2/SDL.h>
-#else
-#  include "../glew/GL/glew.h"
-#  include <SDL.h>
-#  include <SDL_opengl.h>
-#endif
-
 #include "../config/GameConfig.h"
+#include "Renderer.hpp"
 
-class Window {
-private:
-    SDL_Window *window = nullptr;
-    
-public:
-    Window();
-};
+namespace graphics {
+    class Window {
+    private:
+        // Graphics variables
+        SDL_Window *window = nullptr;
+        SDL_GLContext context;
+        Renderer *renderer;
+        
+        // Util variables
+        bool running;
+        
+        // Private functions (init, ...)
+        void setupGL();
+        void createContext();
+        
+    public:
+        Window();
+        ~Window();
+        
+        void run();
+    };
+}
 
 #endif /* Window_hpp */

@@ -20,6 +20,12 @@
 		93765FAC21F76B8600CC6BA4 /* SDL2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FA121F76B7B00CC6BA4 /* SDL2.framework */; };
 		93765FB221F76DD400CC6BA4 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FB021F76DD400CC6BA4 /* Window.cpp */; };
 		93765FBC21F76EB300CC6BA4 /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = 93765FB621F76EB300CC6BA4 /* glew.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		93765FBF21F7723C00CC6BA4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765FBE21F7723C00CC6BA4 /* OpenGL.framework */; };
+		93765FC221F774DF00CC6BA4 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FC021F774DF00CC6BA4 /* Renderer.cpp */; };
+		93765FC621F7750600CC6BA4 /* Box.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FC421F7750600CC6BA4 /* Box.cpp */; };
+		93765FC921F77A9800CC6BA4 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FC721F77A9800CC6BA4 /* Shader.cpp */; };
+		93765FCD21F77B2400CC6BA4 /* FileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FCB21F77B2400CC6BA4 /* FileReader.cpp */; };
+		93765FCF21F77D1200CC6BA4 /* assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FCE21F77D0B00CC6BA4 /* assets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +35,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				93765FCF21F77D1200CC6BA4 /* assets in CopyFiles */,
 				93765FA821F76B8600CC6BA4 /* SDL2_image.framework in CopyFiles */,
 				93765FA921F76B8600CC6BA4 /* SDL2_mixer.framework in CopyFiles */,
 				93765FAA21F76B8600CC6BA4 /* SDL2_net.framework in CopyFiles */,
@@ -55,6 +62,16 @@
 		93765FB921F76EB300CC6BA4 /* eglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eglew.h; sourceTree = "<group>"; };
 		93765FBA21F76EB300CC6BA4 /* wglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
 		93765FBB21F76EB300CC6BA4 /* glew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
+		93765FBE21F7723C00CC6BA4 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		93765FC021F774DF00CC6BA4 /* Renderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Renderer.cpp; sourceTree = "<group>"; };
+		93765FC121F774DF00CC6BA4 /* Renderer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Renderer.hpp; sourceTree = "<group>"; };
+		93765FC421F7750600CC6BA4 /* Box.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Box.cpp; sourceTree = "<group>"; };
+		93765FC521F7750600CC6BA4 /* Box.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Box.hpp; sourceTree = "<group>"; };
+		93765FC721F77A9800CC6BA4 /* Shader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		93765FC821F77A9800CC6BA4 /* Shader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		93765FCB21F77B2400CC6BA4 /* FileReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FileReader.cpp; sourceTree = "<group>"; };
+		93765FCC21F77B2400CC6BA4 /* FileReader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileReader.hpp; sourceTree = "<group>"; };
+		93765FCE21F77D0B00CC6BA4 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../assets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93765FBF21F7723C00CC6BA4 /* OpenGL.framework in Frameworks */,
 				93765FA321F76B7B00CC6BA4 /* SDL2_net.framework in Frameworks */,
 				93765FA521F76B7B00CC6BA4 /* SDL2_ttf.framework in Frameworks */,
 				93765FA421F76B7B00CC6BA4 /* SDL2_mixer.framework in Frameworks */,
@@ -76,6 +94,7 @@
 		93765F8B21F7693600CC6BA4 = {
 			isa = PBXGroup;
 			children = (
+				93765FCE21F77D0B00CC6BA4 /* assets */,
 				93765FA221F76B7B00CC6BA4 /* SDL2_image.framework */,
 				93765F9F21F76B7B00CC6BA4 /* SDL2_mixer.framework */,
 				93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */,
@@ -83,6 +102,7 @@
 				93765FA121F76B7B00CC6BA4 /* SDL2.framework */,
 				93765F9621F7693600CC6BA4 /* Dimension++ */,
 				93765F9521F7693600CC6BA4 /* Products */,
+				93765FBD21F7723C00CC6BA4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +117,7 @@
 		93765F9621F7693600CC6BA4 /* Dimension++ */ = {
 			isa = PBXGroup;
 			children = (
+				93765FCA21F77B1900CC6BA4 /* util */,
 				93765FB521F76EB300CC6BA4 /* glew */,
 				93765FAE21F76C9B00CC6BA4 /* config */,
 				93765FAD21F76C8F00CC6BA4 /* graphics */,
@@ -108,8 +129,13 @@
 		93765FAD21F76C8F00CC6BA4 /* graphics */ = {
 			isa = PBXGroup;
 			children = (
+				93765FC321F774F700CC6BA4 /* objects */,
 				93765FB021F76DD400CC6BA4 /* Window.cpp */,
 				93765FB121F76DD400CC6BA4 /* Window.hpp */,
+				93765FC021F774DF00CC6BA4 /* Renderer.cpp */,
+				93765FC121F774DF00CC6BA4 /* Renderer.hpp */,
+				93765FC721F77A9800CC6BA4 /* Shader.cpp */,
+				93765FC821F77A9800CC6BA4 /* Shader.hpp */,
 			);
 			path = graphics;
 			sourceTree = "<group>";
@@ -140,6 +166,32 @@
 				93765FBB21F76EB300CC6BA4 /* glew.h */,
 			);
 			path = GL;
+			sourceTree = "<group>";
+		};
+		93765FBD21F7723C00CC6BA4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93765FBE21F7723C00CC6BA4 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		93765FC321F774F700CC6BA4 /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				93765FC421F7750600CC6BA4 /* Box.cpp */,
+				93765FC521F7750600CC6BA4 /* Box.hpp */,
+			);
+			path = objects;
+			sourceTree = "<group>";
+		};
+		93765FCA21F77B1900CC6BA4 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				93765FCB21F77B2400CC6BA4 /* FileReader.cpp */,
+				93765FCC21F77B2400CC6BA4 /* FileReader.hpp */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,9 +250,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93765FC221F774DF00CC6BA4 /* Renderer.cpp in Sources */,
 				93765F9821F7693600CC6BA4 /* main.cpp in Sources */,
+				93765FCD21F77B2400CC6BA4 /* FileReader.cpp in Sources */,
 				93765FB221F76DD400CC6BA4 /* Window.cpp in Sources */,
 				93765FBC21F76EB300CC6BA4 /* glew.c in Sources */,
+				93765FC921F77A9800CC6BA4 /* Shader.cpp in Sources */,
+				93765FC621F7750600CC6BA4 /* Box.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +377,7 @@
 		93765F9C21F7693600CC6BA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
@@ -335,6 +392,7 @@
 		93765F9D21F7693600CC6BA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
