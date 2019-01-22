@@ -7,6 +7,8 @@
 //
 
 #include "Window.hpp"
+#include "objects/Box.hpp"
+#include "Shader.hpp"
 
 void graphics::Window::setupGL() {
     // Set up GL context
@@ -41,6 +43,9 @@ void graphics::Window::createContext() {
     
     printf("[INFO] Initialized GLEW: \n\tGL   Version: %s\n\tGLSL Version: %s\n", glGetString(GL_VERSION), glGetString(GL_SHADING_LANGUAGE_VERSION));
     SDL_GL_SetSwapInterval(1); // Enable Vsync for OpenGL
+    
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
 }
 
 graphics::Window::Window() {
@@ -55,6 +60,11 @@ void graphics::Window::run() {
     running = true;
     SDL_Event e;
     
+    graphics::Box *box = new graphics::Box(-0.5f, -1.0f, 0, 1, 1, 1);
+    graphics::Shader *shader = graphics::loadFromFiles("assets/shaders/test.vert", "assets/shaders/test.frag");
+
+    float angle = 0;
+    
     while(running) {
         while(SDL_PollEvent(&e)) {
             if(e.type == SDL_WINDOWEVENT) {
@@ -66,9 +76,21 @@ void graphics::Window::run() {
             }
         }
         
-        glClearColor(1, 0, 1, 1);
-        
+        glClearColor(0, 0, 0, 1);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        
+        shader->bind();
+        shader->uniformf("angle", angle);
+        angle += 0.001f;
+        box->render();
+        shader->unbind();
+        
+        // If there was an error print it
+        GLenum err = glGetError();
+        if(err != GL_NO_ERROR) {
+            printf("[ERROR] GL Error: %d\n", err);
+        }
+        
         SDL_GL_SwapWindow(window);
     }
 }

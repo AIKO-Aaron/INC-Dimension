@@ -15,13 +15,36 @@
 #  include "../glew/GL/glew.h"
 #endif
 
+#include <stdio.h>
+
 namespace graphics {
+    static const uint8_t *indicies = new uint8_t[36] {
+        0, 1, 2,
+        2, 3, 0,
+        
+        4, 5, 6,
+        6, 7, 4,
+        
+        0, 4, 5,
+        5, 1, 0,
+        
+        2, 3, 7,
+        7, 6, 2,
+        
+        0, 3, 7,
+        7, 4, 0,
+        
+        1, 2, 6,
+        6, 5, 1
+    };
+    
     class Box {
     private:
-        GLuint vboID;
+        GLuint vboID = 0, iboID;
         
     public:
-        Box();
+        Box(float x, float y, float z, float w, float h, float d);
+        void render();
     };
 }
 
