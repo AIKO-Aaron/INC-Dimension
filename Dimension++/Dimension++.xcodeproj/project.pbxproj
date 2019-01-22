@@ -8,23 +8,53 @@
 
 /* Begin PBXBuildFile section */
 		93765F9821F7693600CC6BA4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765F9721F7693600CC6BA4 /* main.cpp */; };
+		93765FA321F76B7B00CC6BA4 /* SDL2_net.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */; };
+		93765FA421F76B7B00CC6BA4 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765F9F21F76B7B00CC6BA4 /* SDL2_mixer.framework */; };
+		93765FA521F76B7B00CC6BA4 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765FA021F76B7B00CC6BA4 /* SDL2_ttf.framework */; };
+		93765FA621F76B7B00CC6BA4 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765FA121F76B7B00CC6BA4 /* SDL2.framework */; };
+		93765FA721F76B7B00CC6BA4 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765FA221F76B7B00CC6BA4 /* SDL2_image.framework */; };
+		93765FA821F76B8600CC6BA4 /* SDL2_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FA221F76B7B00CC6BA4 /* SDL2_image.framework */; };
+		93765FA921F76B8600CC6BA4 /* SDL2_mixer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765F9F21F76B7B00CC6BA4 /* SDL2_mixer.framework */; };
+		93765FAA21F76B8600CC6BA4 /* SDL2_net.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */; };
+		93765FAB21F76B8600CC6BA4 /* SDL2_ttf.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FA021F76B7B00CC6BA4 /* SDL2_ttf.framework */; };
+		93765FAC21F76B8600CC6BA4 /* SDL2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FA121F76B7B00CC6BA4 /* SDL2.framework */; };
+		93765FB221F76DD400CC6BA4 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FB021F76DD400CC6BA4 /* Window.cpp */; };
+		93765FBC21F76EB300CC6BA4 /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = 93765FB621F76EB300CC6BA4 /* glew.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		93765F9221F7693600CC6BA4 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				93765FA821F76B8600CC6BA4 /* SDL2_image.framework in CopyFiles */,
+				93765FA921F76B8600CC6BA4 /* SDL2_mixer.framework in CopyFiles */,
+				93765FAA21F76B8600CC6BA4 /* SDL2_net.framework in CopyFiles */,
+				93765FAB21F76B8600CC6BA4 /* SDL2_ttf.framework in CopyFiles */,
+				93765FAC21F76B8600CC6BA4 /* SDL2.framework in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		93765F9421F7693600CC6BA4 /* Dimension++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Dimension++"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93765F9721F7693600CC6BA4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_net.framework; path = ../SDL2_net.framework; sourceTree = "<group>"; };
+		93765F9F21F76B7B00CC6BA4 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../SDL2_mixer.framework; sourceTree = "<group>"; };
+		93765FA021F76B7B00CC6BA4 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../SDL2_ttf.framework; sourceTree = "<group>"; };
+		93765FA121F76B7B00CC6BA4 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../SDL2.framework; sourceTree = "<group>"; };
+		93765FA221F76B7B00CC6BA4 /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../SDL2_image.framework; sourceTree = "<group>"; };
+		93765FAF21F76CA900CC6BA4 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
+		93765FB021F76DD400CC6BA4 /* Window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Window.cpp; sourceTree = "<group>"; };
+		93765FB121F76DD400CC6BA4 /* Window.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Window.hpp; sourceTree = "<group>"; };
+		93765FB621F76EB300CC6BA4 /* glew.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = glew.c; sourceTree = "<group>"; };
+		93765FB821F76EB300CC6BA4 /* glxew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glxew.h; sourceTree = "<group>"; };
+		93765FB921F76EB300CC6BA4 /* eglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = eglew.h; sourceTree = "<group>"; };
+		93765FBA21F76EB300CC6BA4 /* wglew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wglew.h; sourceTree = "<group>"; };
+		93765FBB21F76EB300CC6BA4 /* glew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = glew.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +62,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93765FA321F76B7B00CC6BA4 /* SDL2_net.framework in Frameworks */,
+				93765FA521F76B7B00CC6BA4 /* SDL2_ttf.framework in Frameworks */,
+				93765FA421F76B7B00CC6BA4 /* SDL2_mixer.framework in Frameworks */,
+				93765FA621F76B7B00CC6BA4 /* SDL2.framework in Frameworks */,
+				93765FA721F76B7B00CC6BA4 /* SDL2_image.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +76,11 @@
 		93765F8B21F7693600CC6BA4 = {
 			isa = PBXGroup;
 			children = (
+				93765FA221F76B7B00CC6BA4 /* SDL2_image.framework */,
+				93765F9F21F76B7B00CC6BA4 /* SDL2_mixer.framework */,
+				93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */,
+				93765FA021F76B7B00CC6BA4 /* SDL2_ttf.framework */,
+				93765FA121F76B7B00CC6BA4 /* SDL2.framework */,
 				93765F9621F7693600CC6BA4 /* Dimension++ */,
 				93765F9521F7693600CC6BA4 /* Products */,
 			);
@@ -57,9 +97,49 @@
 		93765F9621F7693600CC6BA4 /* Dimension++ */ = {
 			isa = PBXGroup;
 			children = (
+				93765FB521F76EB300CC6BA4 /* glew */,
+				93765FAE21F76C9B00CC6BA4 /* config */,
+				93765FAD21F76C8F00CC6BA4 /* graphics */,
 				93765F9721F7693600CC6BA4 /* main.cpp */,
 			);
 			path = "Dimension++";
+			sourceTree = "<group>";
+		};
+		93765FAD21F76C8F00CC6BA4 /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				93765FB021F76DD400CC6BA4 /* Window.cpp */,
+				93765FB121F76DD400CC6BA4 /* Window.hpp */,
+			);
+			path = graphics;
+			sourceTree = "<group>";
+		};
+		93765FAE21F76C9B00CC6BA4 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				93765FAF21F76CA900CC6BA4 /* GameConfig.h */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
+		93765FB521F76EB300CC6BA4 /* glew */ = {
+			isa = PBXGroup;
+			children = (
+				93765FB621F76EB300CC6BA4 /* glew.c */,
+				93765FB721F76EB300CC6BA4 /* GL */,
+			);
+			path = glew;
+			sourceTree = "<group>";
+		};
+		93765FB721F76EB300CC6BA4 /* GL */ = {
+			isa = PBXGroup;
+			children = (
+				93765FB821F76EB300CC6BA4 /* glxew.h */,
+				93765FB921F76EB300CC6BA4 /* eglew.h */,
+				93765FBA21F76EB300CC6BA4 /* wglew.h */,
+				93765FBB21F76EB300CC6BA4 /* glew.h */,
+			);
+			path = GL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +199,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				93765F9821F7693600CC6BA4 /* main.cpp in Sources */,
+				93765FB221F76DD400CC6BA4 /* Window.cpp in Sources */,
+				93765FBC21F76EB300CC6BA4 /* glew.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,8 +321,13 @@
 		93765F9C21F7693600CC6BA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9TPDPL7CQS;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Dimension++/glew";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -248,8 +335,13 @@
 		93765F9D21F7693600CC6BA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9TPDPL7CQS;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Dimension++/glew";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

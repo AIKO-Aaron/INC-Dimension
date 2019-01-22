@@ -2,6 +2,7 @@ cd "$(dirname $0)"
 
 #include platform specific download util functions
 unamestr=$(uname)
+proj="Dimension++"
 
 if [[ $unamestr = "Darwin" ]]; then
   source "./downloadUtilMac.sh"
@@ -28,13 +29,13 @@ downloadLibrary "SDL2_image" "2.0.4" "https://www.libsdl.org/projects/SDL_image/
 curl "https://github.com/nigels-com/glew/releases/download/glew-2.1.0/glew-2.1.0.zip" -o "./glew.zip" -L
 echo -n "A" | unzip "./glew.zip"
 rm -f "glew.zip"
-mkdir "./Informatik/Informatik/glew/"
-mv "./glew-2.1.0/src/glew.c" "./Informatik/Informatik/glew/"
- mkdir "./Informatik/Informatik/glew/GL"
-mv "./glew-2.1.0/include/GL/glew.h" "./Informatik/Informatik/glew/GL/glew.h"
-mv "./glew-2.1.0/include/GL/eglew.h" "./Informatik/Informatik/glew/GL/eglew.h"
-mv "./glew-2.1.0/include/GL/glxew.h" "./Informatik/Informatik/glew/GL/glxew.h"
-mv "./glew-2.1.0/include/GL/wglew.h" "./Informatik/Informatik/glew/GL/wglew.h"
+mkdir "./$proj/$proj/glew/"
+mv "./glew-2.1.0/src/glew.c" "./$proj/$proj/glew/"
+ mkdir "./$proj/$proj/glew/GL"
+mv "./glew-2.1.0/include/GL/glew.h" "./$proj/$proj/glew/GL/glew.h"
+mv "./glew-2.1.0/include/GL/eglew.h" "./$proj/$proj/glew/GL/eglew.h"
+mv "./glew-2.1.0/include/GL/glxew.h" "./$proj/$proj/glew/GL/glxew.h"
+mv "./glew-2.1.0/include/GL/wglew.h" "./$proj/$proj/glew/GL/wglew.h"
 
 rm -rf "./glew-2.1.0"
 

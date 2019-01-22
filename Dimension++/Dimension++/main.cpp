@@ -6,10 +6,9 @@
 //  Copyright © 2019 Aaron Hodel. All rights reserved.
 //
 
-#include <iostream>
+#include "graphics/Window.hpp"
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    Window *window = new Window();
     return 0;
 }
