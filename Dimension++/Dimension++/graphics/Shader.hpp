@@ -28,6 +28,7 @@ namespace graphics {
         inline void unbind() { glUseProgram(0); }
         
         inline void uniformf(const char* name, float value) { glUniform1f(glGetUniformLocation(shaderID, name), value); }
+        inline void uniformi(const char* name, int value) { glUniform1i(glGetUniformLocation(shaderID, name), value); }
     };
     
     extern Shader *loadFromFiles(const char *vertPath, const char* fragPath);

@@ -11,6 +11,8 @@
 graphics::Renderer::Renderer() {
     glGenVertexArrays(1, &vaoID);
     glBindVertexArray(vaoID);
+    
+    IMG_Init(IMG_INIT_JPG | IMG_INIT_PNG); // JPG & PNG support
 }
 
 graphics::Renderer::~Renderer() {

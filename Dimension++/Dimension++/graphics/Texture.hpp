@@ -1,13 +1,13 @@
 //
-//  Renderer.hpp
+//  Texture.hpp
 //  Dimension++
 //
-//  Created by Aaron Hodel on 22.01.19.
+//  Created by Aaron Hodel on 23.01.19.
 //  Copyright © 2019 Aaron Hodel. All rights reserved.
 //
 
-#ifndef Renderer_hpp
-#define Renderer_hpp
+#ifndef Texture_hpp
+#define Texture_hpp
 
 #ifdef __APPLE__
 #  include <GL/glew.h>
@@ -21,20 +21,17 @@
 #  include <SDL_image.h>
 #endif
 
-#include "Shader.hpp"
-
 namespace graphics {
-    class Renderer {
+    
+    class Texture {
     private:
-        GLuint vaoID = 0;
+        GLuint texID = 0;
         
     public:
-        Renderer();
-        ~Renderer();
+        Texture(const char* path);
+        inline void bind(int location) { glActiveTexture(GL_TEXTURE0 + location); glBindTexture(GL_TEXTURE_2D, texID); } // unbind necessary, just don't use unused textures...
     };
+    
 }
 
-#include "objects/Box.hpp" // Just need the definition, so we don't need to include box (or whatever else) extra
-#include "Texture.hpp"
-
-#endif /* Renderer_hpp */
+#endif /* Texture_hpp */

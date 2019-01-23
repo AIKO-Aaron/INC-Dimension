@@ -27,6 +27,7 @@
 		93765FCD21F77B2400CC6BA4 /* FileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FCB21F77B2400CC6BA4 /* FileReader.cpp */; };
 		93765FCF21F77D1200CC6BA4 /* assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FCE21F77D0B00CC6BA4 /* assets */; };
 		93765FD321F8848600CC6BA4 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FD121F8848600CC6BA4 /* Cube.cpp */; };
+		93765FD621F8A84B00CC6BA4 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FD421F8A84B00CC6BA4 /* Texture.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -75,6 +76,8 @@
 		93765FCE21F77D0B00CC6BA4 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../assets; sourceTree = "<group>"; };
 		93765FD121F8848600CC6BA4 /* Cube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
 		93765FD221F8848600CC6BA4 /* Cube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cube.hpp; sourceTree = "<group>"; };
+		93765FD421F8A84B00CC6BA4 /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		93765FD521F8A84B00CC6BA4 /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				93765FC121F774DF00CC6BA4 /* Renderer.hpp */,
 				93765FC721F77A9800CC6BA4 /* Shader.cpp */,
 				93765FC821F77A9800CC6BA4 /* Shader.hpp */,
+				93765FD421F8A84B00CC6BA4 /* Texture.cpp */,
+				93765FD521F8A84B00CC6BA4 /* Texture.hpp */,
 			);
 			path = graphics;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 				93765FD321F8848600CC6BA4 /* Cube.cpp in Sources */,
 				93765FC221F774DF00CC6BA4 /* Renderer.cpp in Sources */,
 				93765F9821F7693600CC6BA4 /* main.cpp in Sources */,
+				93765FD621F8A84B00CC6BA4 /* Texture.cpp in Sources */,
 				93765FCD21F77B2400CC6BA4 /* FileReader.cpp in Sources */,
 				93765FB221F76DD400CC6BA4 /* Window.cpp in Sources */,
 				93765FBC21F76EB300CC6BA4 /* glew.c in Sources */,

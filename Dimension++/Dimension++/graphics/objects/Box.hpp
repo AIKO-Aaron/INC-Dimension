@@ -15,7 +15,7 @@
 #  include "../glew/GL/glew.h"
 #endif
 
-#include <stdio.h>
+#include "../Texture.hpp"
 
 namespace graphics {
     static const uint8_t *indicies = new uint8_t[36] {
@@ -42,8 +42,11 @@ namespace graphics {
     private:
         GLuint vboID = 0, iboID = 0, vaoID = 0;
         
+        Texture *texture = nullptr;
+        
     public:
         Box(float x, float y, float z, float w, float h, float d);
+        Box(float x, float y, float z, float w, float h, float d, Texture *texture);
         void render();
     };
 }
