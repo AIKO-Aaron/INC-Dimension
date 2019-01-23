@@ -19,6 +19,9 @@
 #  include <SDL_opengl.h>
 #endif
 
+#include "objects/Box.hpp"
+#include "Shader.hpp"
+
 namespace graphics {
     class Renderer {
     private:

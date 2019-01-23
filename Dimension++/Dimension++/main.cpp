@@ -6,11 +6,12 @@
 //  Copyright © 2019 Aaron Hodel. All rights reserved.
 //
 
+#include "test/Cube.hpp"
 #include "graphics/Window.hpp"
-#include "graphics/Shader.hpp"
 
 int main(int argc, const char * argv[]) {
-    graphics::Window *window = new graphics::Window();
+    graphics::Window *window = new graphics::Window(test::cube::render);
+    test::cube::init();
     window->run();
     return 0;
 }

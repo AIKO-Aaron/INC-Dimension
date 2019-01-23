@@ -50,7 +50,7 @@ void graphics::Window::createContext() {
     glDepthFunc(GL_LESS);
 }
 
-graphics::Window::Window() {
+graphics::Window::Window(gameRender func) : renderFunc(func) {
     SDL_Init(SDL_INIT_VIDEO | SDL_VIDEO_OPENGL | SDL_INIT_TIMER);
     setupGL(); // set up the gl context
     window = SDL_CreateWindow("3D", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
@@ -64,11 +64,6 @@ void graphics::Window::run() {
     
     std::chrono::high_resolution_clock clock = std::chrono::high_resolution_clock(); // Create high accuracy clock
     auto start_time = clock.now(); // Now --> used to wait afterwards
-
-    graphics::Box *box = new graphics::Box(-0.5f, -0.5f, -0.5, 1, 1, 1);
-    graphics::Shader *shader = graphics::loadFromFiles("assets/shaders/test.vert", "assets/shaders/test.frag");
-
-    float angle = 0;
     
     while(running) {
         while(SDL_PollEvent(&e)) {
@@ -85,11 +80,7 @@ void graphics::Window::run() {
         glClearColor(0, 0, 0, 1);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
-        shader->bind();
-        shader->uniformf("angle", angle);
-        angle += 0.01f;
-        box->render();
-        shader->unbind();
+        renderFunc();
         
         // If there was an error print it
         GLenum err = glGetError();

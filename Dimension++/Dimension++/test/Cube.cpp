@@ -1,0 +1,33 @@
+//
+//  Cube.cpp
+//  Dimension++
+//
+//  Created by Aaron Hodel on 23.01.19.
+//  Copyright © 2019 Aaron Hodel. All rights reserved.
+//
+
+#include "Cube.hpp"
+
+graphics::Box **box = new graphics::Box*[3 * 9];
+graphics::Shader *shader;
+float angle;
+
+void test::cube::init() {
+    for(int i = 0; i < 27; i++) {
+        float x = (float) ((int) (i % 3)) / 3.0f - 0.5f;
+        float y = (float) ((int) (i / 3) % 3) / 3.0f - 0.5f;
+        float z = (float) ((int) (i / 9)) / 3.0f - 0.5f;
+        box[i] = new graphics::Box(x, y, z, 1.0f / 3.0f, 1.0f / 3.0f, 1.0f / 3.0f);
+    }
+    shader = graphics::loadFromFiles("assets/shaders/test.vert", "assets/shaders/test.frag");
+    
+    angle = 0;
+}
+
+void test::cube::render() {
+    shader->bind();
+    shader->uniformf("angle", angle);
+    angle += 0.01f;
+    for(int i = 0; i < 27; i++) box[i]->render(); // They use the same shader, so no problem
+    shader->unbind();
+}

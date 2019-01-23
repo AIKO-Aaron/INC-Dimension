@@ -26,6 +26,7 @@
 		93765FC921F77A9800CC6BA4 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FC721F77A9800CC6BA4 /* Shader.cpp */; };
 		93765FCD21F77B2400CC6BA4 /* FileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FCB21F77B2400CC6BA4 /* FileReader.cpp */; };
 		93765FCF21F77D1200CC6BA4 /* assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FCE21F77D0B00CC6BA4 /* assets */; };
+		93765FD321F8848600CC6BA4 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FD121F8848600CC6BA4 /* Cube.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -72,6 +73,8 @@
 		93765FCB21F77B2400CC6BA4 /* FileReader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = FileReader.cpp; sourceTree = "<group>"; };
 		93765FCC21F77B2400CC6BA4 /* FileReader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = FileReader.hpp; sourceTree = "<group>"; };
 		93765FCE21F77D0B00CC6BA4 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; name = assets; path = ../assets; sourceTree = "<group>"; };
+		93765FD121F8848600CC6BA4 /* Cube.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Cube.cpp; sourceTree = "<group>"; };
+		93765FD221F8848600CC6BA4 /* Cube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cube.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,7 @@
 		93765F9621F7693600CC6BA4 /* Dimension++ */ = {
 			isa = PBXGroup;
 			children = (
+				93765FD021F8847600CC6BA4 /* test */,
 				93765FCA21F77B1900CC6BA4 /* util */,
 				93765FB521F76EB300CC6BA4 /* glew */,
 				93765FAE21F76C9B00CC6BA4 /* config */,
@@ -194,6 +198,15 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		93765FD021F8847600CC6BA4 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				93765FD121F8848600CC6BA4 /* Cube.cpp */,
+				93765FD221F8848600CC6BA4 /* Cube.hpp */,
+			);
+			path = test;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -250,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93765FD321F8848600CC6BA4 /* Cube.cpp in Sources */,
 				93765FC221F774DF00CC6BA4 /* Renderer.cpp in Sources */,
 				93765F9821F7693600CC6BA4 /* main.cpp in Sources */,
 				93765FCD21F77B2400CC6BA4 /* FileReader.cpp in Sources */,

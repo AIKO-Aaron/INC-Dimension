@@ -15,12 +15,15 @@
 #include <thread>
 
 namespace graphics {
+    typedef void (*gameRender)();
+    
     class Window {
     private:
         // Graphics variables
         SDL_Window *window = nullptr;
         SDL_GLContext context;
         Renderer *renderer;
+        gameRender renderFunc;
         
         // Util variables
         bool running;
@@ -30,7 +33,7 @@ namespace graphics {
         void createContext();
         
     public:
-        Window();
+        Window(gameRender func);
         ~Window();
         
         void run();
