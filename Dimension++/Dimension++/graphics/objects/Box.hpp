@@ -40,7 +40,7 @@ namespace graphics {
     
     class Box {
     private:
-        GLuint vboID = 0, iboID;
+        GLuint vboID = 0, iboID = 0, vaoID = 0;
         
     public:
         Box(float x, float y, float z, float w, float h, float d);

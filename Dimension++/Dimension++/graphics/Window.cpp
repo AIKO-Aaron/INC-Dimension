@@ -62,6 +62,9 @@ void graphics::Window::run() {
     running = true;
     SDL_Event e;
     
+    std::chrono::high_resolution_clock clock = std::chrono::high_resolution_clock(); // Create high accuracy clock
+    auto start_time = clock.now(); // Now --> used to wait afterwards
+
     graphics::Box *box = new graphics::Box(-0.5f, -0.5f, -0.5, 1, 1, 1);
     graphics::Shader *shader = graphics::loadFromFiles("assets/shaders/test.vert", "assets/shaders/test.frag");
 
@@ -84,7 +87,7 @@ void graphics::Window::run() {
         
         shader->bind();
         shader->uniformf("angle", angle);
-        angle += 0.001f;
+        angle += 0.01f;
         box->render();
         shader->unbind();
         
@@ -95,6 +98,11 @@ void graphics::Window::run() {
         }
         
         SDL_GL_SwapWindow(window);
+        
+        auto end_time = clock.now();
+        auto difference = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
+        if(difference.count() > 0) std::this_thread::sleep_for(std::chrono::microseconds(16000) - difference);
+        start_time = end_time;
     }
 }
 

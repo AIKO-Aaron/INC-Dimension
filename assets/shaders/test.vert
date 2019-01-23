@@ -61,6 +61,6 @@ void main() {
     modelview = modelview * rotate_x(angle);
     modelview = modelview * translate(0, 0, -0.5f);*/
     
-    position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(PI / 4.0f) * rotate_x(angle)) * vec4(vert, 1.0));
+    position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle / 4.0f) * rotate_x(angle)) * vec4(vert, 1.0));
     gl_Position = position;
 }

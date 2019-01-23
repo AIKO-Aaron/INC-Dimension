@@ -11,6 +11,7 @@
 graphics::Box::Box(float x, float y, float z, float w, float h, float d) {
     glGenBuffers(1, &vboID); // The verticies (points)
     glGenBuffers(1, &iboID); // The indicies (When which point)
+    glGenVertexArrays(1, &vaoID);
     
     GLfloat *verticies = new GLfloat[2 * 8 * 3] {
         x + 0, y + 0, z + 0,
@@ -36,9 +37,9 @@ graphics::Box::Box(float x, float y, float z, float w, float h, float d) {
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36, indicies, GL_STATIC_DRAW);
-}
-
-void graphics::Box::render() {
+    
+    glBindVertexArray(vaoID);
+    
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
     
@@ -47,12 +48,11 @@ void graphics::Box::render() {
     glVertexAttribPointer(1, 3, GL_FLOAT, false, 6 * sizeof(GLfloat), (void*) (3 * sizeof(GLfloat)));
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
+    glBindVertexArray(0);
+}
 
+void graphics::Box::render() {
+    glBindVertexArray(vaoID);
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_BYTE, 0);
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-    glDisableVertexAttribArray(0);
-    glDisableVertexAttribArray(1);
+    glBindVertexArray(0);
 }

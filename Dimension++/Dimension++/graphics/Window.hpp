@@ -11,6 +11,8 @@
 
 #include "../config/GameConfig.h"
 #include "Renderer.hpp"
+#include <chrono>
+#include <thread>
 
 namespace graphics {
     class Window {
