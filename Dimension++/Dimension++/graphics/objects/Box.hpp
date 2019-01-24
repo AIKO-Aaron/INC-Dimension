@@ -16,6 +16,7 @@
 #endif
 
 #include "../Texture.hpp"
+#include "../Shader.hpp"
 
 namespace graphics {
     static const uint8_t *indicies = new uint8_t[36] {
@@ -38,16 +39,42 @@ namespace graphics {
         6, 5, 1
     };
     
+    static const uint8_t *textures_indicies = new uint8_t[36] {
+        0, 1, 2,
+        2, 3, 0,
+        
+        4, 5, 6,
+        6, 7, 4,
+        
+        8, 9, 10,
+        10, 11, 8,
+        
+        12, 13, 14,
+        14, 15, 12,
+        
+        16, 17, 18,
+        18, 19, 16,
+        
+        20, 21, 22,
+        22, 23, 20
+    };
+    
     class Box {
     private:
         GLuint vboID = 0, iboID = 0, vaoID = 0;
+        GLfloat *verticies = nullptr;
         
         Texture *texture = nullptr;
         
     public:
         Box(float x, float y, float z, float w, float h, float d);
         Box(float x, float y, float z, float w, float h, float d, Texture *texture);
-        void render();
+        
+        Box(float x, float y, float z, float w, float h, float d, uint32_t tb, uint32_t lr, uint32_t fb);
+        void setColors(uint32_t *colrs, bool rx = false, bool ry = false, bool rz = false);
+        uint32_t *getColors();
+        
+        void render(Shader *shader);
     };
 }
 

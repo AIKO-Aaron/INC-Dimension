@@ -6,5 +6,5 @@ in vec2 uv_coords;
 out vec4 color;
 
 void main() {
-    color = texture(tex, uv_coords);
+    color = texture(tex, uv_coords).rgba;
 }
