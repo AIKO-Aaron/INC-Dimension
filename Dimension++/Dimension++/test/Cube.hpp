@@ -10,10 +10,11 @@
 #define Cube_hpp
 
 #include "../graphics/Renderer.hpp"
+#include "../graphics/Window.hpp"
 
 namespace test {
     namespace cube {
-        extern void init();
+        extern void init(graphics::Window *window);
         extern void render();
     }
 }

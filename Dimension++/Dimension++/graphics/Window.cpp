@@ -67,6 +67,10 @@ void graphics::Window::run() {
     
     while(running) {
         while(SDL_PollEvent(&e)) {
+            for(gameEvent handler : eventHandlers) {
+                handler(e);
+            }
+            
             if(e.type == SDL_WINDOWEVENT) {
                 if(e.window.event == SDL_WINDOWEVENT_CLOSE) running = false;
                 else if(e.window.event == SDL_WINDOWEVENT_RESIZED) glViewport(0, 0, e.window.data1, e.window.data2);

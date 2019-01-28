@@ -9,7 +9,7 @@
 #ifndef GameConfig_h
 #define GameConfig_h
 
-#define SCREEN_WIDTH 540
+#define SCREEN_WIDTH 960
 #define SCREEN_HEIGHT 540
 
 #endif /* GameConfig_h */

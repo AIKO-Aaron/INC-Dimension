@@ -5,7 +5,8 @@
 layout (location = 0) in vec3 vert;
 layout (location = 1) in vec3 color;
 
-uniform float angle;
+uniform float angle_x;
+uniform float angle_y;
 
 out vec4 position;
 out vec3 col;
@@ -43,8 +44,8 @@ mat4 scale = mat4(1, 0, 0, 0,
                   0, 0, 1, 0,
                   0, 0, 0, 1);
 
-float r = 1;
-float l = -1;
+float r = 16.0f/9.0f;
+float l = -16.0f/9.0f;
 float n = 1;
 float f = 10;
 float t = -1;
@@ -61,6 +62,6 @@ void main() {
     modelview = modelview * rotate_x(angle);
     modelview = modelview * translate(0, 0, -0.5f);*/
     
-    position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle / 4.0f) * rotate_x(angle)) * vec4(vert, 1.0));
+    position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle_y) * rotate_x(angle_x)) * vec4(vert, 1.0));
     gl_Position = position;
 }

@@ -8,17 +8,27 @@
 
 #include "Cube.hpp"
 
-#define CUBE_SIZE 4
+#define CUBE_SIZE 3
 #define NUM_BLOCKS (CUBE_SIZE * CUBE_SIZE * CUBE_SIZE)
 #define INDEX(x, y, z) (CUBE_SIZE * CUBE_SIZE * (z) + CUBE_SIZE * (y) + (x))
 
 graphics::Box **box = new graphics::Box*[NUM_BLOCKS];
 graphics::Shader *shader;
-float angle;
+float angle_x, angle_y;
 const uint8_t *keys;
 uint8_t *fetched = nullptr;
 
-void test::cube::init() {
+void eventHandler(SDL_Event e) {
+    if(e.type == SDL_MOUSEMOTION) {
+        if(e.button.button == SDL_BUTTON_LEFT) {
+            angle_x += (float) e.motion.yrel / 50.0f;
+            angle_y -= (float) e.motion.xrel / 50.0f;
+        }
+        // printf("Mouse motion %d, %d\n", e.motion.xrel, e.motion.yrel);
+    }
+}
+
+void test::cube::init(graphics::Window *window) {
     for(int i = 0; i < NUM_BLOCKS; i++) {
         float x = 1.01f * (float) ((int) (i % CUBE_SIZE)) / (float) CUBE_SIZE - 0.5f;
         float y = -1.01f * (float) ((int) (i / CUBE_SIZE) % CUBE_SIZE) / (float) CUBE_SIZE + 0.5f;
@@ -26,7 +36,10 @@ void test::cube::init() {
         box[i] = new graphics::Box(x, y, z, 1.0f / (float) CUBE_SIZE, 1.0f / (float) CUBE_SIZE, 1.0f / (float) CUBE_SIZE, ((i/CUBE_SIZE)%CUBE_SIZE) == 0 ? 0xFFFFFF : ((i/CUBE_SIZE)%CUBE_SIZE) == 1 ? 0x000000 : 0xFFFF00, (i%CUBE_SIZE) == 0 ? 0xFF0000 : (i%CUBE_SIZE) == 1 ? 0x000000 : 0xFF7F00, (i/(CUBE_SIZE * CUBE_SIZE)) == 0 ? 0x0000FF : (i/(CUBE_SIZE * CUBE_SIZE)) == 1 ? 0x000000 : 0x00FF00);
     }
     shader = graphics::loadFromFiles("assets/shaders/test.vert", "assets/shaders/test.frag");
-    angle = M_PI * 8.0f / 2.0f - 0.4;
+    angle_x = M_PI * 8.0f / 2.0f - 0.4;
+    angle_y = 0;
+    
+    window->addEventHandler(eventHandler);
     
     int amt;
     keys = SDL_GetKeyboardState(&amt);
@@ -130,9 +143,11 @@ void rotateZ(bool reverted = false, int sliceNum = 0) {
 }
 void test::cube::render() {
     shader->bind();
-    //angle += 0.005f;
-    shader->uniformf("angle", angle); // For the whole shader
+    //angle_x += 0.01f;
     
+    shader->uniformf("angle_x", angle_x); // For the whole shader
+    shader->uniformf("angle_y", angle_y); // For the whole shader
+
     for(int i = 0; i < NUM_BLOCKS; i++) box[i]->render(shader);
     
     if(keys[SDL_SCANCODE_RIGHT]) {

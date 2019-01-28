@@ -11,7 +11,7 @@
 
 int main(int argc, const char * argv[]) {
     graphics::Window *window = new graphics::Window(test::cube::render);
-    test::cube::init();
+    test::cube::init(window);
     window->run();
     return 0;
 }
