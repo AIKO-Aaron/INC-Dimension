@@ -223,14 +223,14 @@ void graphics::Box::setColors(uint32_t *colors, bool rotateX, bool rotateY, bool
         verticies[6 * i + 5] = BLUE_PART(colors[rotateX ? 1 : rotateY ? 2 : 0]);
         
         // Top & Bottom colors
-        verticies[6 * i + 51] = RED_PART(colors[rotateX ? 0 : 1]);
-        verticies[6 * i + 52] = GREEN_PART(colors[rotateX ? 0 : 1]);
-        verticies[6 * i + 53] = BLUE_PART(colors[rotateX ? 0 : 1]);
+        verticies[6 * i + 51] = RED_PART(colors[rotateX ? 0 : rotateZ ? 2 : 1]);
+        verticies[6 * i + 52] = GREEN_PART(colors[rotateX ? 0 : rotateZ ? 2 : 1]);
+        verticies[6 * i + 53] = BLUE_PART(colors[rotateX ? 0 : rotateZ ? 2 : 1]);
         
         // Left & right colors
-        verticies[6 * i + 99] = RED_PART(colors[rotateY ? 0 : 2]);
-        verticies[6 * i + 100] = GREEN_PART(colors[rotateY ? 0 : 2]);
-        verticies[6 * i + 101] = BLUE_PART(colors[rotateY ? 0 : 2]);
+        verticies[6 * i + 99] = RED_PART(colors[rotateY ? 0 : rotateZ ? 1 : 2]);
+        verticies[6 * i + 100] = GREEN_PART(colors[rotateY ? 0 : rotateZ ? 1 : 2]);
+        verticies[6 * i + 101] = BLUE_PART(colors[rotateY ? 0 : rotateZ ? 1 : 2]);
     }
     
     glBindVertexArray(vaoID);
