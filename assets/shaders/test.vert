@@ -54,6 +54,6 @@ mat4 perspective = mat4(2.0*n/(r-l), 0, (r+l)/(r-l), 0,
 void main() {
     col = color;
     
-    position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle_y) * rotate_x(angle_x)) * vec4(vert, 1.0) - vec4(pos, 0));
+    position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle_y) * rotate_x(angle_x)) * (vec4(vert, 1.0) - vec4(pos, 0)));
     gl_Position = position;
 }

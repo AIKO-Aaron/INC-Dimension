@@ -6,7 +6,7 @@
 //  Copyright © 2019 Aaron Hodel. All rights reserved.
 //
 
-//#define _CUBE
+// #define _CUBE
 #define _CRAFT
 
 #if defined(_CUBE)

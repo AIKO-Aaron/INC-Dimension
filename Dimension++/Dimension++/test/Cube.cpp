@@ -8,7 +8,7 @@
 
 #include "Cube.hpp"
 
-#define CUBE_SIZE 6
+#define CUBE_SIZE 3
 #define NUM_BLOCKS (CUBE_SIZE * CUBE_SIZE * CUBE_SIZE)
 #define INDEX(x, y, z) (CUBE_SIZE * CUBE_SIZE * (z) + CUBE_SIZE * (y) + (x))
 
