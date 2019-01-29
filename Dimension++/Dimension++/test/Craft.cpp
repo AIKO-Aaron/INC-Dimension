@@ -37,7 +37,7 @@ void test::craft::init(graphics::Window *window) {
             
             float x = 16 * cx + (j % 16) - 8;
             float z = 16 * cz + (int) (j / 16) - 8;
-            float y = 2 + 4.0f * perlin->noise(x / 20.0f, z / 20.0f, 1.0f);
+            float y = 2 + 10.0f * (float) perlin->noise(x / 16.0, z / 16.0, 1.0f);
 
             int col = 0xFF000000 | _rand->randomInt(0xFFFFFF);
             boxes[i * 16 * 16 + j] = new graphics::Box(x, y, z, 1.0f, 1.0f, 1.0f, col, col, col);
@@ -58,15 +58,17 @@ void test::craft::render() {
     shader->uniformf("angle_y", angle_y);
     shader->uniformf("pos", x, y, z);
     
+    float height = 10.0f * (float) perlin->noise(floor(x) / 16.0, floor(z) / 16.0, 1.0f);
+    
     if(jumping) {
         yvel += g;
         y += yvel;
-        if(y > 0) {
-            y = 0;
+        if(y > height) {
+            y = height;
             yvel = 0;
             jumping = false;
         }
-    }
+    } else y = height;
     
     for(int i = 0; i < 9 * 16 * 16; i++) boxes[i]->render(shader);
     
