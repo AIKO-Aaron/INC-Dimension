@@ -58,5 +58,5 @@ graphics::Shader::Shader(const char *vertSrc, const char *fragSrc) {
 }
 
 graphics::Shader *graphics::loadFromFiles(const char *vertPath, const char *fragPath) {
-    return new Shader((const char*) readFile(vertPath).fileContent, (const char*) readFile(fragPath).fileContent);
+    return new Shader((const char*) util::readFile(vertPath).fileContent, (const char*) util::readFile(fragPath).fileContent);
 }

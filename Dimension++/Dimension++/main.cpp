@@ -6,12 +6,22 @@
 //  Copyright © 2019 Aaron Hodel. All rights reserved.
 //
 
-#include "test/Cube.hpp"
+//#define _CUBE
+#define _CRAFT
+
+#if defined(_CUBE)
+#  include "test/Cube.hpp"
+#  define TEST_GAME cube
+#elif defined(_CRAFT)
+#  include "test/Craft.hpp"
+#  define TEST_GAME craft
+#endif
+
 #include "graphics/Window.hpp"
 
 int main(int argc, const char * argv[]) {
-    graphics::Window *window = new graphics::Window(test::cube::render);
-    test::cube::init(window);
+    graphics::Window *window = new graphics::Window(test::TEST_GAME::render);
+    test::TEST_GAME::init(window);
     window->run();
     return 0;
 }

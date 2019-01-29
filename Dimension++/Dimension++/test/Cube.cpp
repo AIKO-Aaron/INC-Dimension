@@ -8,15 +8,15 @@
 
 #include "Cube.hpp"
 
-#define CUBE_SIZE 3
+#define CUBE_SIZE 6
 #define NUM_BLOCKS (CUBE_SIZE * CUBE_SIZE * CUBE_SIZE)
 #define INDEX(x, y, z) (CUBE_SIZE * CUBE_SIZE * (z) + CUBE_SIZE * (y) + (x))
 
-graphics::Box **box = new graphics::Box*[NUM_BLOCKS];
-graphics::Shader *shader;
-float angle_x, angle_y;
-const uint8_t *keys;
-uint8_t *fetched = nullptr;
+static graphics::Box **box = new graphics::Box*[NUM_BLOCKS];
+static graphics::Shader *shader;
+static float angle_x, angle_y;
+static const uint8_t *keys;
+static uint8_t *fetched = nullptr;
 
 void eventHandler(SDL_Event e) {
     if(e.type == SDL_MOUSEMOTION) {

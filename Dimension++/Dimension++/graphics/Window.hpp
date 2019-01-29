@@ -40,6 +40,7 @@ namespace graphics {
         ~Window();
         
         inline void addEventHandler(gameEvent func) { eventHandlers.push_back(func); }
+        inline SDL_Window* getWindow() { return window; }
         
         void run();
     };

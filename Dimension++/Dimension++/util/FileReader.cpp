@@ -8,7 +8,9 @@
 
 #include "FileReader.hpp"
 
-fileData readFile(const char *path) {
+using namespace util;
+
+fileData util::readFile(const char *path) {
     FILE *f;
     fileData data = {0, nullptr};
     

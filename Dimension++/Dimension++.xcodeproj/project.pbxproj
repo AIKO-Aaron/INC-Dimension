@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		936DB5B122003B9D000029D2 /* Craft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5AF22003B9D000029D2 /* Craft.cpp */; };
+		936DB5B422003D3C000029D2 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5B222003D3C000029D2 /* Random.cpp */; };
 		93765F9821F7693600CC6BA4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765F9721F7693600CC6BA4 /* main.cpp */; };
 		93765FA321F76B7B00CC6BA4 /* SDL2_net.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */; };
 		93765FA421F76B7B00CC6BA4 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765F9F21F76B7B00CC6BA4 /* SDL2_mixer.framework */; };
@@ -49,6 +51,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		936DB5AF22003B9D000029D2 /* Craft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Craft.cpp; sourceTree = "<group>"; };
+		936DB5B022003B9D000029D2 /* Craft.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Craft.hpp; sourceTree = "<group>"; };
+		936DB5B222003D3C000029D2 /* Random.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
+		936DB5B322003D3C000029D2 /* Random.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
 		93765F9421F7693600CC6BA4 /* Dimension++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Dimension++"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93765F9721F7693600CC6BA4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_net.framework; path = ../SDL2_net.framework; sourceTree = "<group>"; };
@@ -199,6 +205,8 @@
 			children = (
 				93765FCB21F77B2400CC6BA4 /* FileReader.cpp */,
 				93765FCC21F77B2400CC6BA4 /* FileReader.hpp */,
+				936DB5B222003D3C000029D2 /* Random.cpp */,
+				936DB5B322003D3C000029D2 /* Random.hpp */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -208,6 +216,8 @@
 			children = (
 				93765FD121F8848600CC6BA4 /* Cube.cpp */,
 				93765FD221F8848600CC6BA4 /* Cube.hpp */,
+				936DB5AF22003B9D000029D2 /* Craft.cpp */,
+				936DB5B022003B9D000029D2 /* Craft.hpp */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -275,7 +285,9 @@
 				93765FCD21F77B2400CC6BA4 /* FileReader.cpp in Sources */,
 				93765FB221F76DD400CC6BA4 /* Window.cpp in Sources */,
 				93765FBC21F76EB300CC6BA4 /* glew.c in Sources */,
+				936DB5B422003D3C000029D2 /* Random.cpp in Sources */,
 				93765FC921F77A9800CC6BA4 /* Shader.cpp in Sources */,
+				936DB5B122003B9D000029D2 /* Craft.cpp in Sources */,
 				93765FC621F7750600CC6BA4 /* Box.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
