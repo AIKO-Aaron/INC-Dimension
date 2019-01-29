@@ -11,6 +11,7 @@
 
 #include "../graphics/Renderer.hpp"
 #include "../graphics/Window.hpp"
+#include "../util/Perlin.hpp"
 #include "../util/Random.hpp"
 
 namespace test {

@@ -10,7 +10,10 @@
 
 static graphics::Box **boxes = new graphics::Box*[16 * 16 * 9]; // 16 by 16 blocks per chunk, 1 chunk we're in, 8 around
 static graphics::Shader *shader;
+
+static util::Perlin *perlin = new util::Perlin(0xC0FFEE);
 static util::Random *_rand = new util::Random(0xC0FFEE);
+
 static float angle_x = 0, angle_y = 0;
 static float x = 0, y = 0, z = 0;
 static const uint8_t *keys;
@@ -23,17 +26,21 @@ static void eventHandler(SDL_Event e) {
         angle_y -= (float) e.motion.xrel / 200.0f;
         if(angle_x < -M_PI / 2.0f) angle_x = -M_PI / 2.0f;
         if(angle_x > M_PI / 2.0f) angle_x = M_PI / 2.0f;
-        // printf("Mouse motion %d, %d\n", e.motion.xrel, e.motion.yrel);
     }
 }
 
 void test::craft::init(graphics::Window *window) {
-    for(int i = 0; i < 1; i++) {
+    for(int i = 0; i < 9; i++) {
         for(int j = 0; j < 16 * 16; j++) {
-            float x = (j % 16) - 8;
-            float y = 2;
-            float z = (int) (j / 16) - 8;
-            boxes[i * 16 * 16 + j] = new graphics::Box(x, y, z, 1.0f, 1.0f, 1.0f, 0xFF000000 | _rand->randomInt(0xFFFFFF), 0xFFFF0000, 0xFF00FF00);
+            float cx = (i % 3) - 1;
+            float cz = (i / 3) - 1;
+            
+            float x = 16 * cx + (j % 16) - 8;
+            float z = 16 * cz + (int) (j / 16) - 8;
+            float y = 2 + 4.0f * perlin->noise(x / 20.0f, z / 20.0f, 1.0f);
+
+            int col = 0xFF000000 | _rand->randomInt(0xFFFFFF);
+            boxes[i * 16 * 16 + j] = new graphics::Box(x, y, z, 1.0f, 1.0f, 1.0f, col, col, col);
         }
     }
     
@@ -61,25 +68,26 @@ void test::craft::render() {
         }
     }
     
-    for(int i = 0; i < 16 * 16; i++) {
-        boxes[i]->render(shader);
-    }
+    for(int i = 0; i < 9 * 16 * 16; i++) boxes[i]->render(shader);
+    
+    float speed = 0.1f;
+    if(keys[SDL_SCANCODE_LSHIFT]) speed *= 2.0f;
     
     if(keys[SDL_SCANCODE_W]) {
-        z -= 0.1f * cos(angle_y);
-        x -= 0.1f * sin(angle_y);
+        z -= speed * cos(angle_y);
+        x -= speed * sin(angle_y);
     }
     if(keys[SDL_SCANCODE_S]) {
-        z += 0.1f * cos(angle_y);
-        x += 0.1f * sin(angle_y);
+        z += speed * cos(angle_y);
+        x += speed * sin(angle_y);
     }
     if(keys[SDL_SCANCODE_D]) {
-        x += 0.1f * cos(angle_y);
-        z -= 0.1f * sin(angle_y);
+        x += speed * cos(angle_y);
+        z -= speed * sin(angle_y);
     }
     if(keys[SDL_SCANCODE_A]) {
-        x -= 0.1f * cos(angle_y);
-        z += 0.1f * sin(angle_y);
+        x -= speed * cos(angle_y);
+        z += speed * sin(angle_y);
     }
     
     if(keys[SDL_SCANCODE_SPACE] && !jumping) {

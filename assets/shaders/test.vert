@@ -43,7 +43,7 @@ mat4 translate(float x, float y, float z) {
 float r = 1;
 float l = -1;
 float n = 1;
-float f = 1000;
+float f = 100;
 float t = -1;
 float b = 1;
 mat4 perspective = mat4(2.0*n/(r-l), 0, (r+l)/(r-l), 0,
@@ -54,6 +54,6 @@ mat4 perspective = mat4(2.0*n/(r-l), 0, (r+l)/(r-l), 0,
 void main() {
     col = color;
     
-    position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle_y) * rotate_x(angle_x)) * (vec4(vert, 1.0) - vec4(pos, 0)));
+    position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle_y) * rotate_z(-angle_x * sin(angle_y)) * rotate_x(angle_x * cos(angle_y))) * (vec4(vert, 1.0) - vec4(pos, 0)));
     gl_Position = position;
 }
