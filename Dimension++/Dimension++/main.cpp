@@ -7,7 +7,8 @@
 //
 
 // #define _CUBE
-#define _CRAFT
+// #define _CRAFT
+#define _WAVE
 
 #if defined(_CUBE)
 #  include "test/Cube.hpp"
@@ -15,6 +16,9 @@
 #elif defined(_CRAFT)
 #  include "test/Craft.hpp"
 #  define TEST_GAME craft
+#elif defined(_WAVE)
+#  include "test/Wave.hpp"
+#  define TEST_GAME wave
 #endif
 
 #include "graphics/Window.hpp"

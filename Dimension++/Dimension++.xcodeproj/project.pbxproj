@@ -10,6 +10,7 @@
 		936DB5B122003B9D000029D2 /* Craft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5AF22003B9D000029D2 /* Craft.cpp */; };
 		936DB5B422003D3C000029D2 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5B222003D3C000029D2 /* Random.cpp */; };
 		936DB5B722008ACD000029D2 /* Perlin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5B522008ACD000029D2 /* Perlin.cpp */; };
+		936DB5BA2200A448000029D2 /* Wave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5B82200A448000029D2 /* Wave.cpp */; };
 		93765F9821F7693600CC6BA4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765F9721F7693600CC6BA4 /* main.cpp */; };
 		93765FA321F76B7B00CC6BA4 /* SDL2_net.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */; };
 		93765FA421F76B7B00CC6BA4 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765F9F21F76B7B00CC6BA4 /* SDL2_mixer.framework */; };
@@ -58,6 +59,8 @@
 		936DB5B322003D3C000029D2 /* Random.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
 		936DB5B522008ACD000029D2 /* Perlin.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Perlin.cpp; sourceTree = "<group>"; };
 		936DB5B622008ACD000029D2 /* Perlin.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Perlin.hpp; sourceTree = "<group>"; };
+		936DB5B82200A448000029D2 /* Wave.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Wave.cpp; sourceTree = "<group>"; };
+		936DB5B92200A448000029D2 /* Wave.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Wave.hpp; sourceTree = "<group>"; };
 		93765F9421F7693600CC6BA4 /* Dimension++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Dimension++"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93765F9721F7693600CC6BA4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_net.framework; path = ../SDL2_net.framework; sourceTree = "<group>"; };
@@ -223,6 +226,8 @@
 				93765FD221F8848600CC6BA4 /* Cube.hpp */,
 				936DB5AF22003B9D000029D2 /* Craft.cpp */,
 				936DB5B022003B9D000029D2 /* Craft.hpp */,
+				936DB5B82200A448000029D2 /* Wave.cpp */,
+				936DB5B92200A448000029D2 /* Wave.hpp */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -283,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				936DB5BA2200A448000029D2 /* Wave.cpp in Sources */,
 				93765FD321F8848600CC6BA4 /* Cube.cpp in Sources */,
 				936DB5B722008ACD000029D2 /* Perlin.cpp in Sources */,
 				93765FC221F774DF00CC6BA4 /* Renderer.cpp in Sources */,
