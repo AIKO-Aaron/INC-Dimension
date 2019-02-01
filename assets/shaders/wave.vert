@@ -2,7 +2,7 @@
 
 #define PI 3.1415926535f
 
-#include "assets/shaders/util/util.glsl"
+#include "assets/shaders/util/matutil.glsl"
 #include "assets/shaders/util/perlin.glsl"
 
 layout (location = 0) in vec3 vert;
@@ -30,6 +30,7 @@ mat4 perspective = mat4(2.0*n/(r-l), 0, (r+l)/(r-l), 0,
 void main() {
     uv_coords = uv;
     
-    position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle_y) * rotate_z(-angle_x * sin(angle_y)) * rotate_x(angle_x * cos(angle_y))) * (vec4(vert, 1.0) - vec4(0, 10.0f * noise(vec3(vert.xz , time / 2.0f)) / 20.0f, 0, 0) - vec4(pos, 0)));
+    position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle_y) * rotate_z(-angle_x * sin(angle_y)) * rotate_x(angle_x * cos(angle_y))) * (vec4(vert, 1.0) - vec4(0, 3.0f * noise(vec3(vert.xz / 10.0f , time / 10.0f)), 0, 0) - vec4(pos, 0)));
+    //position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle_y) * rotate_z(-angle_x * sin(angle_y)) * rotate_x(angle_x * cos(angle_y))) * (vec4(vert, 1.0) - vec4(0, 1.0f * sin(0.133711f * vert.x + 0.12144f * time) * sin(0.867992f * vert.z + 0.2134f * time), 0, 0) - vec4(pos, 0)));
     gl_Position = position;
 }

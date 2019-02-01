@@ -14,7 +14,7 @@ util::Perlin::Perlin(uint32_t seed) {
     
     srand(seed);
     int tmp, l1, l2;
-    for(int i = 0; i < 256 * 256; i++) {
+    for(int i = 0; i < 256 * 256; i++) { // Swap randomly selected values a total of 256*256 times, so every value could be swapped with every value
         l1 = rand() & 0xFF;
         l2 = rand() & 0xFF;
         tmp = permutations[l1];

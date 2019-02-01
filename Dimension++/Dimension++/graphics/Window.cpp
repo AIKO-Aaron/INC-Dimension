@@ -24,6 +24,10 @@ void graphics::Window::setupGL() {
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
+    
+    // Multisampling
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 }
 
 void graphics::Window::createContext() {
@@ -48,6 +52,7 @@ void graphics::Window::createContext() {
     
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
+    glEnable(GL_MULTISAMPLE);
 }
 
 graphics::Window::Window(gameRender func) : renderFunc(func) {

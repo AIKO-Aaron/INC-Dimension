@@ -8,7 +8,7 @@
 
 #include "Wave.hpp"
 
-#define SQUARE_SIZE 16
+#define SQUARE_SIZE 32
 
 static graphics::Shader *shader;
 static graphics::Box **boxes = new graphics::Box*[SQUARE_SIZE * SQUARE_SIZE];
@@ -46,7 +46,7 @@ void test::wave::render() {
     shader->uniformf("pos", x, y, z);
     for(int i = 0; i < SQUARE_SIZE * SQUARE_SIZE; i++) boxes[i]->render(shader);
     
-    float speed = 0.1f;
+    float speed = 0.2f;
     if(keys[SDL_SCANCODE_W]) {
         z -= speed * cos(angle_y);
         x -= speed * sin(angle_y);
@@ -63,4 +63,6 @@ void test::wave::render() {
         x -= speed * cos(angle_y);
         z += speed * sin(angle_y);
     }
+    if(keys[SDL_SCANCODE_SPACE]) y -= speed;
+    if(keys[SDL_SCANCODE_LSHIFT]) y += speed;
 }

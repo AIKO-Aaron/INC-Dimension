@@ -16,6 +16,7 @@ static util::Random *_rand = new util::Random(0xC0FFEE);
 
 static float angle_x = 0, angle_y = 0;
 static float x = 0, y = 0, z = 0;
+static float curTime = 0.0f;
 static const uint8_t *keys;
 
 static bool jumping; static float yvel; static const float g = .000981f * 5.0;
@@ -57,6 +58,9 @@ void test::craft::render() {
     shader->uniformf("angle_x", angle_x);
     shader->uniformf("angle_y", angle_y);
     shader->uniformf("pos", x, y, z);
+    shader->uniformf("time", curTime);
+    
+    curTime += 0.01f;
     
     float height = 10.0f * (float) perlin->noise(floor(x) / 16.0, floor(z) / 16.0, 1.0f);
     

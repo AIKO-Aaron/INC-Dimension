@@ -53,6 +53,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9360EED82200BCF30025DCAA /* Vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector.hpp; sourceTree = "<group>"; };
+		9360EEDB2200C15D0025DCAA /* Matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Matrix.hpp; sourceTree = "<group>"; };
 		936DB5AF22003B9D000029D2 /* Craft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Craft.cpp; sourceTree = "<group>"; };
 		936DB5B022003B9D000029D2 /* Craft.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Craft.hpp; sourceTree = "<group>"; };
 		936DB5B222003D3C000029D2 /* Random.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
@@ -109,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9360EED62200BCE60025DCAA /* maths */ = {
+			isa = PBXGroup;
+			children = (
+				9360EED82200BCF30025DCAA /* Vector.hpp */,
+				9360EEDB2200C15D0025DCAA /* Matrix.hpp */,
+			);
+			path = maths;
+			sourceTree = "<group>";
+		};
 		93765F8B21F7693600CC6BA4 = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +146,7 @@
 		93765F9621F7693600CC6BA4 /* Dimension++ */ = {
 			isa = PBXGroup;
 			children = (
+				9360EED62200BCE60025DCAA /* maths */,
 				93765FD021F8847600CC6BA4 /* test */,
 				93765FCA21F77B1900CC6BA4 /* util */,
 				93765FB521F76EB300CC6BA4 /* glew */,
@@ -427,6 +439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9TPDPL7CQS;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
+				GCC_WARN_UNUSED_FUNCTION = NO;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Dimension++/glew";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -442,6 +455,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9TPDPL7CQS;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
+				GCC_WARN_UNUSED_FUNCTION = NO;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Dimension++/glew";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
