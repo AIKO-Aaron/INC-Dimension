@@ -42,3 +42,11 @@ close_code.h
 *.level
 /assets/data/informatik.config
 /Informatik/Informatik/glew
+Dimension++/Dimension++/glew/glew.c
+Dimension++/Dimension++/glew/GL/wglew.h
+Dimension++/Dimension++/glew/GL/glxew.h
+Dimension++/Dimension++/glew/GL/glew.h
+Dimension++/Dimension++/glew/GL/eglew.h
+Dimension++/Dimension++.xcodeproj/project.pbxproj
+Dimension++/Dimension++.xcodeproj/project.pbxproj
+*.pbxproj
