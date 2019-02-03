@@ -24,6 +24,10 @@ void graphics::Window::setupGL() {
     SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
     SDL_GL_SetAttribute(SDL_GL_ALPHA_SIZE, 8);
+    
+    // Multisampling
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLEBUFFERS, 1);
+    SDL_GL_SetAttribute(SDL_GL_MULTISAMPLESAMPLES, 4);
 }
 
 void graphics::Window::createContext() {
@@ -48,6 +52,7 @@ void graphics::Window::createContext() {
     
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
+    glEnable(GL_MULTISAMPLE);
 }
 
 graphics::Window::Window(gameRender func) : renderFunc(func) {
@@ -67,6 +72,10 @@ void graphics::Window::run() {
     
     while(running) {
         while(SDL_PollEvent(&e)) {
+            for(gameEvent handler : eventHandlers) {
+                handler(e);
+            }
+            
             if(e.type == SDL_WINDOWEVENT) {
                 if(e.window.event == SDL_WINDOWEVENT_CLOSE) running = false;
                 else if(e.window.event == SDL_WINDOWEVENT_RESIZED) glViewport(0, 0, e.window.data1, e.window.data2);

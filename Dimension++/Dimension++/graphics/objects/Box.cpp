@@ -62,58 +62,58 @@ graphics::Box::Box(float x, float y, float z, float w, float h, float d, Texture
     
     verticies = new GLfloat[5 * 24] {
         x + 0, y + 0, z + 0,
-        0.25f, 0.25f,
+        0, 0,
         x + w, y + 0, z + 0,
-        0.5f, 0.25f,
+        1, 0,
         x + w, y + h, z + 0,
-        0.5f, 0.5f,
+        1, 1,
         x + 0, y + h, z + 0,
-        0.25f, 0.5f,
+        0, 1,
         
         x + 0, y + 0, z + d,
-        0.75f, 0.25f,
+        0, 0,
         x + w, y + 0, z + d,
-        1.0f, 0.25f,
+        1, 0,
         x + w, y + h, z + d,
-        1.0f, 0.5f,
+        1, 1,
         x + 0, y + h, z + d,
-        0.75f, 0.5f,
-        
+        0, 1,
+
         x + 0, y + 0, z + 0,
-        0.25f, 0.5f,
+        0, 0,
         x + 0, y + 0, z + d,
-        0.25f, 0.75f,
+        1, 0,
         x + w, y + 0, z + d,
-        0.5f, 0.75f,
+        1, 1,
         x + w, y + 0, z + 0,
-        0.5f, 0.5f,
-        
+        0, 1,
+
         x + 0, y + h, z + 0,
-        0.25f, 0.0f,
+        0, 0,
         x + 0, y + h, z + d,
-        0.25f, 0.25f,
+        1, 0,
         x + w, y + h, z + d,
-        0.5f, 0.25f,
+        1, 1,
         x + w, y + h, z + 0,
-        0.5f, 0.0f,
-        
+        0, 1,
+
         x + 0, y + 0, z + 0,
-        0.0f, 0.25f,
+        0, 0,
         x + 0, y + 0, z + d,
-        0.25f, 0.25f,
+        1, 0,
         x + 0, y + h, z + d,
-        0.25f, 0.5f,
+        1, 1,
         x + 0, y + h, z + 0,
-        0.0f, 0.5f,
-        
+        0, 1,
+
         x + w, y + 0, z + 0,
-        0.5f, 0.25f,
+        0, 0,
         x + w, y + 0, z + d,
-        0.75f, 0.25f,
+        1, 0,
         x + w, y + h, z + d,
-        0.75f, 0.5f,
+        1, 1,
         x + w, y + h, z + 0,
-        0.5f, 0.5f,
+        0, 1,
     };
     
     glBindBuffer(GL_ARRAY_BUFFER, vboID);
@@ -223,14 +223,14 @@ void graphics::Box::setColors(uint32_t *colors, bool rotateX, bool rotateY, bool
         verticies[6 * i + 5] = BLUE_PART(colors[rotateX ? 1 : rotateY ? 2 : 0]);
         
         // Top & Bottom colors
-        verticies[6 * i + 51] = RED_PART(colors[rotateX ? 0 : 1]);
-        verticies[6 * i + 52] = GREEN_PART(colors[rotateX ? 0 : 1]);
-        verticies[6 * i + 53] = BLUE_PART(colors[rotateX ? 0 : 1]);
+        verticies[6 * i + 51] = RED_PART(colors[rotateX ? 0 : rotateZ ? 2 : 1]);
+        verticies[6 * i + 52] = GREEN_PART(colors[rotateX ? 0 : rotateZ ? 2 : 1]);
+        verticies[6 * i + 53] = BLUE_PART(colors[rotateX ? 0 : rotateZ ? 2 : 1]);
         
         // Left & right colors
-        verticies[6 * i + 99] = RED_PART(colors[rotateY ? 0 : 2]);
-        verticies[6 * i + 100] = GREEN_PART(colors[rotateY ? 0 : 2]);
-        verticies[6 * i + 101] = BLUE_PART(colors[rotateY ? 0 : 2]);
+        verticies[6 * i + 99] = RED_PART(colors[rotateY ? 0 : rotateZ ? 1 : 2]);
+        verticies[6 * i + 100] = GREEN_PART(colors[rotateY ? 0 : rotateZ ? 1 : 2]);
+        verticies[6 * i + 101] = BLUE_PART(colors[rotateY ? 0 : rotateZ ? 1 : 2]);
     }
     
     glBindVertexArray(vaoID);

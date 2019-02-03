@@ -13,11 +13,13 @@
 #include <stdio.h>
 #include <stdint.h>
 
-typedef struct fileData {
-    uint64_t fileSize;
-    uint8_t *fileContent;
-} fileData;
-
-extern fileData readFile(const char *path);
+namespace util {
+    typedef struct fileData {
+        uint64_t fileSize;
+        uint8_t *fileContent;
+    } fileData;
+    
+    extern fileData readFile(const char *path);
+}
 
 #endif /* FileReader_hpp */

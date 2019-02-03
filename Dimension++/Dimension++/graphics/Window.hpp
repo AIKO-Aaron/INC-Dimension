@@ -13,9 +13,11 @@
 #include "Renderer.hpp"
 #include <chrono>
 #include <thread>
+#include <vector>
 
 namespace graphics {
     typedef void (*gameRender)();
+    typedef void (*gameEvent)(SDL_Event);
     
     class Window {
     private:
@@ -24,6 +26,7 @@ namespace graphics {
         SDL_GLContext context;
         Renderer *renderer;
         gameRender renderFunc;
+        std::vector<gameEvent> eventHandlers = std::vector<gameEvent>();
         
         // Util variables
         bool running;
@@ -31,10 +34,13 @@ namespace graphics {
         // Private functions (init, ...)
         void setupGL();
         void createContext();
-        
+
     public:
         Window(gameRender func);
         ~Window();
+        
+        inline void addEventHandler(gameEvent func) { eventHandlers.push_back(func); }
+        inline SDL_Window* getWindow() { return window; }
         
         void run();
     };

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		936DB5B122003B9D000029D2 /* Craft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5AF22003B9D000029D2 /* Craft.cpp */; };
+		936DB5B422003D3C000029D2 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5B222003D3C000029D2 /* Random.cpp */; };
+		936DB5B722008ACD000029D2 /* Perlin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5B522008ACD000029D2 /* Perlin.cpp */; };
+		936DB5BA2200A448000029D2 /* Wave.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5B82200A448000029D2 /* Wave.cpp */; };
 		93765F9821F7693600CC6BA4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765F9721F7693600CC6BA4 /* main.cpp */; };
 		93765FA321F76B7B00CC6BA4 /* SDL2_net.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */; };
 		93765FA421F76B7B00CC6BA4 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765F9F21F76B7B00CC6BA4 /* SDL2_mixer.framework */; };
@@ -49,6 +53,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9360EED82200BCF30025DCAA /* Vector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector.hpp; sourceTree = "<group>"; };
+		9360EEDB2200C15D0025DCAA /* Matrix.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Matrix.hpp; sourceTree = "<group>"; };
+		936DB5AF22003B9D000029D2 /* Craft.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Craft.cpp; sourceTree = "<group>"; };
+		936DB5B022003B9D000029D2 /* Craft.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Craft.hpp; sourceTree = "<group>"; };
+		936DB5B222003D3C000029D2 /* Random.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Random.cpp; sourceTree = "<group>"; };
+		936DB5B322003D3C000029D2 /* Random.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
+		936DB5B522008ACD000029D2 /* Perlin.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Perlin.cpp; sourceTree = "<group>"; };
+		936DB5B622008ACD000029D2 /* Perlin.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Perlin.hpp; sourceTree = "<group>"; };
+		936DB5B82200A448000029D2 /* Wave.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Wave.cpp; sourceTree = "<group>"; };
+		936DB5B92200A448000029D2 /* Wave.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Wave.hpp; sourceTree = "<group>"; };
 		93765F9421F7693600CC6BA4 /* Dimension++ */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Dimension++"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93765F9721F7693600CC6BA4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_net.framework; path = ../SDL2_net.framework; sourceTree = "<group>"; };
@@ -97,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9360EED62200BCE60025DCAA /* maths */ = {
+			isa = PBXGroup;
+			children = (
+				9360EED82200BCF30025DCAA /* Vector.hpp */,
+				9360EEDB2200C15D0025DCAA /* Matrix.hpp */,
+			);
+			path = maths;
+			sourceTree = "<group>";
+		};
 		93765F8B21F7693600CC6BA4 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +146,7 @@
 		93765F9621F7693600CC6BA4 /* Dimension++ */ = {
 			isa = PBXGroup;
 			children = (
+				9360EED62200BCE60025DCAA /* maths */,
 				93765FD021F8847600CC6BA4 /* test */,
 				93765FCA21F77B1900CC6BA4 /* util */,
 				93765FB521F76EB300CC6BA4 /* glew */,
@@ -199,6 +223,10 @@
 			children = (
 				93765FCB21F77B2400CC6BA4 /* FileReader.cpp */,
 				93765FCC21F77B2400CC6BA4 /* FileReader.hpp */,
+				936DB5B222003D3C000029D2 /* Random.cpp */,
+				936DB5B322003D3C000029D2 /* Random.hpp */,
+				936DB5B522008ACD000029D2 /* Perlin.cpp */,
+				936DB5B622008ACD000029D2 /* Perlin.hpp */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -208,6 +236,10 @@
 			children = (
 				93765FD121F8848600CC6BA4 /* Cube.cpp */,
 				93765FD221F8848600CC6BA4 /* Cube.hpp */,
+				936DB5AF22003B9D000029D2 /* Craft.cpp */,
+				936DB5B022003B9D000029D2 /* Craft.hpp */,
+				936DB5B82200A448000029D2 /* Wave.cpp */,
+				936DB5B92200A448000029D2 /* Wave.hpp */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -268,14 +300,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				936DB5BA2200A448000029D2 /* Wave.cpp in Sources */,
 				93765FD321F8848600CC6BA4 /* Cube.cpp in Sources */,
+				936DB5B722008ACD000029D2 /* Perlin.cpp in Sources */,
 				93765FC221F774DF00CC6BA4 /* Renderer.cpp in Sources */,
 				93765F9821F7693600CC6BA4 /* main.cpp in Sources */,
 				93765FD621F8A84B00CC6BA4 /* Texture.cpp in Sources */,
 				93765FCD21F77B2400CC6BA4 /* FileReader.cpp in Sources */,
 				93765FB221F76DD400CC6BA4 /* Window.cpp in Sources */,
 				93765FBC21F76EB300CC6BA4 /* glew.c in Sources */,
+				936DB5B422003D3C000029D2 /* Random.cpp in Sources */,
 				93765FC921F77A9800CC6BA4 /* Shader.cpp in Sources */,
+				936DB5B122003B9D000029D2 /* Craft.cpp in Sources */,
 				93765FC621F7750600CC6BA4 /* Box.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,6 +439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DMX39VBGM;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
+				GCC_WARN_UNUSED_FUNCTION = NO;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Dimension++/glew";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -418,6 +455,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DMX39VBGM;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
+				GCC_WARN_UNUSED_FUNCTION = NO;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Dimension++/glew";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
