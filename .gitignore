@@ -42,3 +42,4 @@ close_code.h
 *.level
 /assets/data/informatik.config
 /Informatik/Informatik/glew
+/Dimension++/Dimension++/glew

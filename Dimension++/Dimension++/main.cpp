@@ -25,7 +25,7 @@
 #include "maths/Vector.hpp"
 #include "maths/Matrix.hpp"
 
-int main(int argc, const char * argv[]) {
+int main(int argc, char **args) {
     graphics::Window *window = new graphics::Window(test::TEST_GAME::render);
     test::TEST_GAME::init(window);
     window->run();
