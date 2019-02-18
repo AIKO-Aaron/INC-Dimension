@@ -257,5 +257,5 @@ void graphics::Box::render(graphics::Shader *shader) {
     if(texture) texture->bind(0);
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_BYTE, 0);
     shader->unbind();
-    glBindVertexArray(0);
+    //glBindVertexArray(0);
 }
