@@ -63,14 +63,26 @@ graphics::Window::Window(gameRender func) : renderFunc(func) {
     renderer = new graphics::Renderer();
 }
 
+uint32_t graphics::second_callback(uint32_t, void *params) {
+    graphics::Window *window = (graphics::Window*) params;
+    if(!window || !window->window) return 1000;
+    window->lastFPS = window->fps;
+    window->updateTitle = true;
+    window->fps = 0;
+    return 1000;
+}
+
 void graphics::Window::run() {
     running = true;
     SDL_Event e;
     
+    
+    SDL_AddTimer(1000, second_callback, this);
     std::chrono::high_resolution_clock clock = std::chrono::high_resolution_clock(); // Create high accuracy clock
     auto start_time = clock.now(); // Now --> used to wait afterwards
     
     while(running) {
+        start_time = clock.now();
         while(SDL_PollEvent(&e)) {
             for(gameEvent handler : eventHandlers) {
                 handler(e);
@@ -86,6 +98,11 @@ void graphics::Window::run() {
             }
         }
         
+        if(updateTitle) {
+            SDL_SetWindowTitle(window, (std::string("3D | ") + std::to_string(lastFPS)).c_str());
+            updateTitle = false;
+        }
+        
         glClearColor(0, 0, 0, 1);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         
@@ -99,10 +116,10 @@ void graphics::Window::run() {
         
         SDL_GL_SwapWindow(window);
         
+        ++fps;
         auto end_time = clock.now();
         auto difference = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
-        if(difference.count() > 0) std::this_thread::sleep_for(std::chrono::microseconds(16000) - difference);
-        start_time = end_time;
+        if(difference.count() > 0) std::this_thread::sleep_for(std::chrono::microseconds(1000000 / 60) - difference);
     }
 }
 

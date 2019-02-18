@@ -7,8 +7,8 @@
 //
 
 // #define _CUBE
-//#define _CRAFT
- // #define _WAVE
+#define _CRAFT
+// #define _WAVE
 
 #if defined(_CUBE)
 #  include "test/Cube.hpp"

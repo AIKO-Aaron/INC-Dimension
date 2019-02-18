@@ -26,6 +26,8 @@ namespace graphics {
         SDL_GLContext context;
         Renderer *renderer;
         gameRender renderFunc;
+        uint32_t fps = 0, lastFPS = 0;
+        bool updateTitle = false;
         std::vector<gameEvent> eventHandlers = std::vector<gameEvent>();
         
         // Util variables
@@ -34,6 +36,8 @@ namespace graphics {
         // Private functions (init, ...)
         void setupGL();
         void createContext();
+        
+        friend uint32_t second_callback(uint32_t, void *params);
 
     public:
         Window(gameRender func);

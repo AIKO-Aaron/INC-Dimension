@@ -55,7 +55,7 @@ mat4 perspective = mat4(2.0*n/(r-l), 0, (r+l)/(r-l), 0,
                         0, 0, -1, 0);
 
 void main() {
-    //col = color;
+    col = color;
     
     float t = time / 5.0f;
     float r = 1.0f * noise(vec3(vert.xz / 20.0f, t));
