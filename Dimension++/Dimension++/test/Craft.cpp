@@ -41,7 +41,7 @@ void test::craft::init(graphics::Window *window) {
             float y = 2 + 10.0f * (float) perlin->noise(x / 16.0, z / 16.0, 1.0f);
 
             int col = 0xFF000000 | _rand->randomInt(0xFFFFFF);
-            boxes[i * 16 * 16 + j] = new graphics::Box(x, y, z, 1.0f, 1.0f, 1.0f);
+            boxes[i * 16 * 16 + j] = new graphics::Box(x, y, z, 1.0f, 1.0f, 1.0f, col, col, col);
         }
     }
     

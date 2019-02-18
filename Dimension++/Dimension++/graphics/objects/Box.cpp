@@ -8,8 +8,8 @@
 
 #include "Box.hpp"
 
-#define RED_PART(x) ((float) ((x >> 16) & 0xFF) / 255.0f)
-#define GREEN_PART(x) ((float) ((x >> 8) & 0xFF) / 255.0f)
+#define RED_PART(x) ((float) (((x) >> 16) & 0xFF) / 255.0f)
+#define GREEN_PART(x) ((float) (((x) >> 8) & 0xFF) / 255.0f)
 #define BLUE_PART(x) ((float) ((x) & 0xFF) / 255.0f)
 
 graphics::Box::Box(float x, float y, float z, float w, float h, float d) {
