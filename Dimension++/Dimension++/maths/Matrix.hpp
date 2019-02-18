@@ -16,12 +16,12 @@ namespace maths {
     template <int M, int N>
     class Matrix {
     public:
-        double *values = new double[N * M];
+        float *values = new float[N * M];
 
     public:
         Matrix();
-        Matrix(double filler);
-        Matrix(double *values);
+        Matrix(float filler);
+        Matrix(float *values);
 		Matrix(Vector<M> v);
         
         inline void print() {
@@ -35,23 +35,23 @@ namespace maths {
             printf("]\n");
         }
         
-        inline double &operator()(int y, int x) { return values[y * N + x]; }
-        inline double &operator[](int index) { return values[index]; }
+        inline float &operator()(int y, int x) { return values[y * N + x]; }
+        inline float &operator[](int index) { return values[index]; }
 
 		Matrix<N, M> transpose();
-		double det();
+		float det();
 		Matrix<M, N> inv();
         
         inline Vector<N> getRow(int row) { return Vector<N>(&values[N * row]); }
-        inline Vector<M> getColumn(int column) { double *d = new double[M]; for(int i = 0; i < M; i++) d[i] = values[N * i + column]; return Vector<M>(d); }
+        inline Vector<M> getColumn(int column) { float *d = new float[M]; for(int i = 0; i < M; i++) d[i] = values[N * i + column]; return Vector<M>(d); }
 
         template <int T>
         Matrix<M, T> operator*(Matrix<N, T> other);
 
-		Matrix<M, N> operator*(double scalar);
-		Matrix<M, N> operator*=(double scalar);
-		Matrix<M, N> operator/(double scalar);
-		Matrix<M, N> operator/=(double scalar);
+		Matrix<M, N> operator*(float scalar);
+		Matrix<M, N> operator*=(float scalar);
+		Matrix<M, N> operator/(float scalar);
+		Matrix<M, N> operator/=(float scalar);
 	};
 }
 
@@ -61,12 +61,12 @@ maths::Matrix<M, N>::Matrix() {
 }
 
 template <int M, int N>
-maths::Matrix<M, N>::Matrix(double filler) {
+maths::Matrix<M, N>::Matrix(float filler) {
     for(int i = 0; i < M * N; i++) values[i] = filler;
 }
 
 template <int M, int N>
-maths::Matrix<M, N>::Matrix(double *v) {
+maths::Matrix<M, N>::Matrix(float *v) {
     for(int i = 0; i < M * N; i++) values[i] = v[i];
 }
 
@@ -84,27 +84,27 @@ inline maths::Matrix<M, T> maths::Matrix<M, N>::operator*(Matrix<N, T> other) {
 }
 
 template <int M, int N>
-maths::Matrix<M, N> maths::Matrix<M, N>::operator*(double scalar) {
+maths::Matrix<M, N> maths::Matrix<M, N>::operator*(float scalar) {
 	Matrix<M, N> cpy = maths::Matrix<M, N>(values);
 	for (int i = 0; i < M * N; i++) cpy.values[i] *= scalar;
 	return cpy;
 }
 
 template <int M, int N>
-maths::Matrix<M, N> maths::Matrix<M, N>::operator*=(double scalar) {
+maths::Matrix<M, N> maths::Matrix<M, N>::operator*=(float scalar) {
 	for (int i = 0; i < M * N; i++) values[i] *= scalar;
 	return *this;
 }
 
 template <int M, int N>
-maths::Matrix<M, N> maths::Matrix<M, N>::operator/(double scalar) {
+maths::Matrix<M, N> maths::Matrix<M, N>::operator/(float scalar) {
 	Matrix<M, N> cpy = maths::Matrix<M, N>(values);
 	for (int i = 0; i < M * N; i++) cpy.values[i] /= scalar;
 	return cpy;
 }
 
 template <int M, int N>
-maths::Matrix<M, N> maths::Matrix<M, N>::operator/=(double scalar) {
+maths::Matrix<M, N> maths::Matrix<M, N>::operator/=(float scalar) {
 	for (int i = 0; i < M * N; i++) values[i] /= scalar;
 	return *this;
 }
@@ -117,16 +117,16 @@ inline maths::Matrix<N, M> maths::Matrix<M, N>::transpose() {
 }
 
 template <int M, int N>
-inline double maths::Matrix<M, N>::det() { // Calculate the determinant recursive until we have a 2 by 2 sub-matrix
+inline float maths::Matrix<M, N>::det() { // Calculate the determinant recursive until we have a 2 by 2 sub-matrix
 	if (M != N) {
 		printf("[ERROR] Trying to calculate determinant of no square matrix!\n");
 		return 0;
 	}
 
 	bool negative = false;
-	double det = 0;
+	float det = 0;
 	for (int i = 0; i < M; i++) {
-		double *v = new double[(M - 1) * (M - 1)];
+		float *v = new float[(M - 1) * (M - 1)];
 		int index = 0;
 		for (int j = 0; j < M; j++) {
 			if (j == i) continue;
@@ -137,7 +137,7 @@ inline double maths::Matrix<M, N>::det() { // Calculate the determinant recursiv
 		Matrix<M - 1, M - 1> sub = Matrix<M - 1, M - 1>(v);
 		delete[] v;
 
-		double x = values[i] * sub.det();
+		float x = values[i] * sub.det();
 		if (negative) det -= x;
 		else det += x;
 		negative = !negative;
@@ -146,12 +146,12 @@ inline double maths::Matrix<M, N>::det() { // Calculate the determinant recursiv
 }
 
 template <>
-inline double maths::Matrix<2, 2>::det() { // "Exit-Condition" for the recursive determinant calculation
+inline float maths::Matrix<2, 2>::det() { // "Exit-Condition" for the recursive determinant calculation
 	return values[0] * values[3] - values[1] * values[2];
 }
 
 template <>
-inline double maths::Matrix<1, 1>::det() { // Security, Don't want to crash (or not compile) without any error
+inline float maths::Matrix<1, 1>::det() { // Security, Don't want to crash (or not compile) without any error
 	return values[0];
 }
 
@@ -163,7 +163,7 @@ inline maths::Matrix<M, N> maths::Matrix<M, N>::inv() {
 	}
 
 	Matrix<M, M> minors = Matrix<M, M>();
-	double *v = new double[(M - 1) * (M - 1)]; // Create sub-matrix values
+	float *v = new float[(M - 1) * (M - 1)]; // Create sub-matrix values
 	bool negative = false;
 	for (int i = 0; i < M * M; i++) {
 		int index = 0;
@@ -180,7 +180,7 @@ inline maths::Matrix<M, N> maths::Matrix<M, N>::inv() {
 	}
 	delete[] v;
 
-	double det = 0;
+	float det = 0;
 	for (int i = 0; i < M; i++) det += minors.values[i] * values[i];
 	minors = minors.transpose();
 
@@ -191,34 +191,34 @@ inline maths::Matrix<M, N> maths::Matrix<M, N>::inv() {
 
 namespace maths {
     template <int D>
-    static maths::Matrix<D, D> diagonal(double diagonal) {
+    static maths::Matrix<D, D> diagonal(float diagonal) {
         maths::Matrix<D, D> m;
         for(int i = 0; i < D; i++) m(i, i) = diagonal;
         return m;
     }
     
-    static maths::Matrix<2, 2> rotate2(double angle) {
-        return Matrix<2, 2>(new double[4] { cos(angle), -sin(angle), sin(angle), cos(angle) });
+    static maths::Matrix<2, 2> rotate2(float angle) {
+        return Matrix<2, 2>(new float[4] { cos(angle), -sin(angle), sin(angle), cos(angle) });
     }
 
-	static maths::Matrix<3, 3> rotate3_z(double angle) {
-		return Matrix<3, 3>(new double[9]{ 
+	static maths::Matrix<3, 3> rotate3_z(float angle) {
+		return Matrix<3, 3>(new float[9]{
 			cos(angle), -sin(angle), 0,
 			sin(angle), cos(angle), 0,
 			0, 0, 1
 		});
 	}
 
-	static maths::Matrix<3, 3> rotate3_y(double angle) {
-		return Matrix<3, 3>(new double[9]{
+	static maths::Matrix<3, 3> rotate3_y(float angle) {
+		return Matrix<3, 3>(new float[9]{
 			cos(angle), 0, sin(angle),
 			0, 1, 0,
 			-sin(angle), 0, cos(angle)
 		});
 	}
 
-	static maths::Matrix<3, 3> rotate3_x(double angle) {
-		return Matrix<3, 3>(new double[9]{
+	static maths::Matrix<3, 3> rotate3_x(float angle) {
+		return Matrix<3, 3>(new float[9]{
 			1, 0, 0,
 			0, cos(angle), -sin(angle),
 			0, sin(angle), cos(angle)
@@ -226,15 +226,15 @@ namespace maths {
 	}
 
 	static maths::Matrix<4, 4> gl_4d(Matrix<3, 3> d) { // Convert 3d Matrix to 4d by adding 0s & 1s
-		return Matrix<4, 4>(new double[16] {
+		return Matrix<4, 4>(new float[16] {
 			d(0, 0), d(0, 1), d(0, 2), 0,
 			d(1, 0), d(1, 1), d(1, 2), 0,
 			d(2, 0), d(2, 1), d(2, 2), 0,
 			0, 0, 0, 1 });
 	}
 
-    static maths::Matrix<4, 4> translate3(double x, double y, double z) { // Create a translation matrix. Can't be 3 by 3, as those could only rotate & scale 3d space
-        return Matrix<4, 4>(new double[16] {
+    static maths::Matrix<4, 4> translate3(float x, float y, float z) { // Create a translation matrix. Can't be 3 by 3, as those could only rotate & scale 3d space
+        return Matrix<4, 4>(new float[16] {
             1, 0, 0, x,
             0, 1, 0, y,
             0, 0, 1, z,

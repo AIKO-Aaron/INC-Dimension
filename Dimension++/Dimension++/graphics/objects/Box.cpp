@@ -253,9 +253,9 @@ uint32_t *graphics::Box::getColors() {
 
 void graphics::Box::render(graphics::Shader *shader) {
     glBindVertexArray(vaoID);
-    //shader->bind();
+    shader->bind();
     if(texture) texture->bind(0);
+    shader->uniformMatrix4("modelview", modelview);
     glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_BYTE, 0);
-    //shader->unbind();
-    //glBindVertexArray(0);
+    shader->unbind();
 }

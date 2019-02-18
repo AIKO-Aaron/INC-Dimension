@@ -17,6 +17,7 @@
 
 #include "../Texture.hpp"
 #include "../Shader.hpp"
+#include "../../maths/Matrix.hpp"
 
 namespace graphics {
     static const uint8_t *indicies = new uint8_t[36] {
@@ -63,6 +64,7 @@ namespace graphics {
     private:
         GLuint vboID = 0, iboID = 0, vaoID = 0;
         GLfloat *verticies = nullptr;
+        maths::Matrix<4, 4> modelview = maths::diagonal<4>(1); // identity
         
         Texture *texture = nullptr;
         
@@ -73,6 +75,9 @@ namespace graphics {
         Box(float x, float y, float z, float w, float h, float d, uint32_t tb, uint32_t lr, uint32_t fb);
         void setColors(uint32_t *colrs, bool rx = false, bool ry = false, bool rz = false);
         uint32_t *getColors();
+        
+        inline void resetModelView() { modelview = maths::diagonal<4>(1); }
+        inline void applyTransformation(maths::Matrix<4, 4> transformation) { modelview = modelview * transformation; }
         
         void render(Shader *shader);
     };

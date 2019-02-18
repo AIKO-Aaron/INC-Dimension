@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		932829FA221AC0DD008E0645 /* SDL2_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FA221F76B7B00CC6BA4 /* SDL2_image.framework */; };
+		932829FB221AC0DD008E0645 /* SDL2_mixer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765F9F21F76B7B00CC6BA4 /* SDL2_mixer.framework */; };
+		932829FC221AC0DD008E0645 /* SDL2_net.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */; };
+		932829FD221AC0DD008E0645 /* SDL2_ttf.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FA021F76B7B00CC6BA4 /* SDL2_ttf.framework */; };
+		932829FE221AC0DD008E0645 /* SDL2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FA121F76B7B00CC6BA4 /* SDL2.framework */; };
 		936DB5B122003B9D000029D2 /* Craft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5AF22003B9D000029D2 /* Craft.cpp */; };
 		936DB5B422003D3C000029D2 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5B222003D3C000029D2 /* Random.cpp */; };
 		936DB5B722008ACD000029D2 /* Perlin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 936DB5B522008ACD000029D2 /* Perlin.cpp */; };
@@ -17,11 +22,6 @@
 		93765FA521F76B7B00CC6BA4 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765FA021F76B7B00CC6BA4 /* SDL2_ttf.framework */; };
 		93765FA621F76B7B00CC6BA4 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765FA121F76B7B00CC6BA4 /* SDL2.framework */; };
 		93765FA721F76B7B00CC6BA4 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765FA221F76B7B00CC6BA4 /* SDL2_image.framework */; };
-		93765FA821F76B8600CC6BA4 /* SDL2_image.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FA221F76B7B00CC6BA4 /* SDL2_image.framework */; };
-		93765FA921F76B8600CC6BA4 /* SDL2_mixer.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765F9F21F76B7B00CC6BA4 /* SDL2_mixer.framework */; };
-		93765FAA21F76B8600CC6BA4 /* SDL2_net.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765F9E21F76B7B00CC6BA4 /* SDL2_net.framework */; };
-		93765FAB21F76B8600CC6BA4 /* SDL2_ttf.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FA021F76B7B00CC6BA4 /* SDL2_ttf.framework */; };
-		93765FAC21F76B8600CC6BA4 /* SDL2.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FA121F76B7B00CC6BA4 /* SDL2.framework */; };
 		93765FB221F76DD400CC6BA4 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FB021F76DD400CC6BA4 /* Window.cpp */; };
 		93765FBC21F76EB300CC6BA4 /* glew.c in Sources */ = {isa = PBXBuildFile; fileRef = 93765FB621F76EB300CC6BA4 /* glew.c */; settings = {COMPILER_FLAGS = "-w"; }; };
 		93765FBF21F7723C00CC6BA4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93765FBE21F7723C00CC6BA4 /* OpenGL.framework */; };
@@ -32,6 +32,7 @@
 		93765FCF21F77D1200CC6BA4 /* assets in CopyFiles */ = {isa = PBXBuildFile; fileRef = 93765FCE21F77D0B00CC6BA4 /* assets */; };
 		93765FD321F8848600CC6BA4 /* Cube.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FD121F8848600CC6BA4 /* Cube.cpp */; };
 		93765FD621F8A84B00CC6BA4 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93765FD421F8A84B00CC6BA4 /* Texture.cpp */; };
+		93FDA0D9221AD41400E28435 /* Physics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93FDA0D7221AD41400E28435 /* Physics.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,11 +43,11 @@
 			dstSubfolderSpec = 16;
 			files = (
 				93765FCF21F77D1200CC6BA4 /* assets in CopyFiles */,
-				93765FA821F76B8600CC6BA4 /* SDL2_image.framework in CopyFiles */,
-				93765FA921F76B8600CC6BA4 /* SDL2_mixer.framework in CopyFiles */,
-				93765FAA21F76B8600CC6BA4 /* SDL2_net.framework in CopyFiles */,
-				93765FAB21F76B8600CC6BA4 /* SDL2_ttf.framework in CopyFiles */,
-				93765FAC21F76B8600CC6BA4 /* SDL2.framework in CopyFiles */,
+				932829FA221AC0DD008E0645 /* SDL2_image.framework in CopyFiles */,
+				932829FB221AC0DD008E0645 /* SDL2_mixer.framework in CopyFiles */,
+				932829FC221AC0DD008E0645 /* SDL2_net.framework in CopyFiles */,
+				932829FD221AC0DD008E0645 /* SDL2_ttf.framework in CopyFiles */,
+				932829FE221AC0DD008E0645 /* SDL2.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +93,8 @@
 		93765FD221F8848600CC6BA4 /* Cube.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Cube.hpp; sourceTree = "<group>"; };
 		93765FD421F8A84B00CC6BA4 /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		93765FD521F8A84B00CC6BA4 /* Texture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
+		93FDA0D7221AD41400E28435 /* Physics.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Physics.cpp; sourceTree = "<group>"; };
+		93FDA0D8221AD41400E28435 /* Physics.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Physics.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +243,8 @@
 				936DB5B022003B9D000029D2 /* Craft.hpp */,
 				936DB5B82200A448000029D2 /* Wave.cpp */,
 				936DB5B92200A448000029D2 /* Wave.hpp */,
+				93FDA0D7221AD41400E28435 /* Physics.cpp */,
+				93FDA0D8221AD41400E28435 /* Physics.hpp */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 				936DB5B722008ACD000029D2 /* Perlin.cpp in Sources */,
 				93765FC221F774DF00CC6BA4 /* Renderer.cpp in Sources */,
 				93765F9821F7693600CC6BA4 /* main.cpp in Sources */,
+				93FDA0D9221AD41400E28435 /* Physics.cpp in Sources */,
 				93765FD621F8A84B00CC6BA4 /* Texture.cpp in Sources */,
 				93765FCD21F77B2400CC6BA4 /* FileReader.cpp in Sources */,
 				93765FB221F76DD400CC6BA4 /* Window.cpp in Sources */,
@@ -437,10 +443,11 @@
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8DMX39VBGM;
+				DEVELOPMENT_TEAM = 9TPDPL7CQS;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Dimension++/glew";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -453,10 +460,11 @@
 				CLANG_ENABLE_MODULES = NO;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8DMX39VBGM;
+				DEVELOPMENT_TEAM = 9TPDPL7CQS;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../";
 				GCC_WARN_UNUSED_FUNCTION = NO;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Dimension++/glew";
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path";
 				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

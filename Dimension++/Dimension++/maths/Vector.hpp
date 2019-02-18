@@ -9,37 +9,40 @@
 #ifndef Vector_hpp
 #define Vector_hpp
 
+#include <cmath>
+#include <stdio.h>
+
 namespace maths {
     
     template<int D>
     class Vector {
     private:
-        double *values = new double[D];
+        float *values = new float[D];
         
     public:
         Vector();
-        Vector(double v);
-        Vector(double *v);
+        Vector(float v);
+        Vector(float *v);
         
-        inline double &operator[](int index) { return values[index]; }
+        inline float &operator[](int index) { return values[index]; }
         
-        double dot(Vector<D> other);
-        inline double operator *(Vector<D> other) { return dot(other); }
+        float dot(Vector<D> other);
+        inline float operator *(Vector<D> other) { return dot(other); }
         
         inline Vector<D> operator +(Vector<D> other) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] + other[i]; return result; }
         inline Vector<D> operator -(Vector<D> other) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] - other[i]; return result; }
         inline Vector<D> operator +=(Vector<D> other) { for(int i = 0; i < D; i++) values[i] += other[i]; return *this; }
         inline Vector<D> operator -=(Vector<D> other) { for(int i = 0; i < D; i++) values[i] -= other[i]; return *this; }
 
-        inline Vector<D> operator *(double scalar) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] * scalar; return result; }
-        inline Vector<D> operator /(double scalar) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] / scalar; return result; }
-        inline Vector<D> operator *=(double scalar) { for(int i = 0; i < D; i++) values[i] *= scalar; return *this; }
-        inline Vector<D> operator /=(double scalar) { for(int i = 0; i < D; i++) values[i] /= scalar; return *this; }
+        inline Vector<D> operator *(float scalar) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] * scalar; return result; }
+        inline Vector<D> operator /(float scalar) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] / scalar; return result; }
+        inline Vector<D> operator *=(float scalar) { for(int i = 0; i < D; i++) values[i] *= scalar; return *this; }
+        inline Vector<D> operator /=(float scalar) { for(int i = 0; i < D; i++) values[i] /= scalar; return *this; }
 
-        inline Vector<D> operator +(double vec) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] + vec; return result; }
-        inline Vector<D> operator -(double vec) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] - vec; return result; }
-        inline Vector<D> operator +=(double vec) { for(int i = 0; i < D; i++) values[i] += vec; return *this; }
-        inline Vector<D> operator -=(double vec) { for(int i = 0; i < D; i++) values[i] -= vec; return *this; }
+        inline Vector<D> operator +(float vec) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] + vec; return result; }
+        inline Vector<D> operator -(float vec) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] - vec; return result; }
+        inline Vector<D> operator +=(float vec) { for(int i = 0; i < D; i++) values[i] += vec; return *this; }
+        inline Vector<D> operator -=(float vec) { for(int i = 0; i < D; i++) values[i] -= vec; return *this; }
     };
 }
 
@@ -49,18 +52,18 @@ maths::Vector<D>::Vector() {
 }
 
 template <int D>
-maths::Vector<D>::Vector(double v) {
+maths::Vector<D>::Vector(float v) {
     for(int i = 0; i < D; i++) values[i] = v;
 }
 
 template <int D>
-maths::Vector<D>::Vector(double *v) {
+maths::Vector<D>::Vector(float *v) {
     for(int i = 0; i < D; i++) values[i] = v[i];
 }
 
 template <int D>
-double maths::Vector<D>::dot(Vector<D> other) {
-    double result = 0.0;
+float maths::Vector<D>::dot(Vector<D> other) {
+    float result = 0.0;
     for(int i = 0; i < D; i++) result += other[i] * values[i];
     return result;
 }
