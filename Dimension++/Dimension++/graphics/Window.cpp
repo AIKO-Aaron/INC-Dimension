@@ -80,7 +80,7 @@ void graphics::Window::run() {
                 if(e.window.event == SDL_WINDOWEVENT_CLOSE) running = false;
                 else if(e.window.event == SDL_WINDOWEVENT_RESIZED) glViewport(0, 0, e.window.data1, e.window.data2);
             } else if(e.type == SDL_KEYDOWN) {
-                
+				if (e.key.keysym.sym == SDLK_ESCAPE) running = false;
             } else if(e.type == SDL_QUIT) {
                 running = false;
             }
