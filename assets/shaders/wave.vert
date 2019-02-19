@@ -12,7 +12,10 @@ uniform float angle_x;
 uniform float angle_y;
 uniform vec3 pos;
 uniform float time;
-uniform mat4 modelview;
+uniform mat4 modelview = mat4(1,0,0,0,
+                              0,1,0,0,
+                              0,0,1,0,
+                              0,0,0,1);
 
 out vec4 position;
 out vec2 uv_coords;
@@ -32,10 +35,11 @@ void main() {
     //position = perspective * modelview * rotate_y(angle_y) * rotate_z(-angle_x * sin(angle_y)) * rotate_x(angle_x * cos(angle_y)) * (vec4(vert, 1.0) - vec4(pos, 0));
     
     
-    vec4 curpos = vec4(vert, 1.0) - vec4(pos, 0.0);
+    float n = noise(vec3(vert.xz / 10.0f , time / 10.0f));
+    vec4 curpos = vec4(vert, 1.0) - vec4(pos, 0.0) + vec4(0, n, 0, 0);
     curpos = rotate_y(angle_y) * rotate_z(-angle_x * sin(angle_y)) * rotate_x(angle_x * cos(angle_y)) * curpos;
     curpos = perspective * modelview * curpos;
-    curpos = curpos;
+    //curpos = curpos;
     position = curpos;
 
     

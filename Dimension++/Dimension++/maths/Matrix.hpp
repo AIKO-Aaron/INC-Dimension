@@ -45,6 +45,12 @@ namespace maths {
         inline Vector<N> getRow(int row) { return Vector<N>(&values[N * row]); }
         inline Vector<M> getColumn(int column) { float *d = new float[M]; for(int i = 0; i < M; i++) d[i] = values[N * i + column]; return Vector<M>(d); }
 
+        inline bool operator==(Matrix<M, N> other) { for(int i = 0; i < M * N; i++) if(other.values[i] != values[i]) return false; return true; }
+        inline bool operator!=(Matrix<M, N> other) { for(int i = 0; i < M * N; i++) if(other.values[i] != values[i]) return true; return false; }
+
+        inline bool operator==(float value) { for(int i = 0; i < M * N; i++) if(values[i] != (((int)(i/N)==(i%N)) ? value : 0)) return false; return true; }
+        inline bool operator!=(float value) { for(int i = 0; i < M * N; i++) if(values[i] != (((int)(i/N)==(i%N)) ? value : 0)) return true; return false; }
+
         template <int T>
         Matrix<M, T> operator*(Matrix<N, T> other);
 

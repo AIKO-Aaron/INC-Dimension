@@ -53,6 +53,8 @@ void graphics::Window::createContext() {
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LESS);
     glEnable(GL_MULTISAMPLE);
+    
+    glCullFace(GL_BACK);
 }
 
 graphics::Window::Window(gameRender func) : renderFunc(func) {
@@ -99,7 +101,7 @@ void graphics::Window::run() {
         }
         
         if(updateTitle) {
-            SDL_SetWindowTitle(window, (std::string("3D | ") + std::to_string(lastFPS)).c_str());
+            SDL_SetWindowTitle(window, (std::string("3D | ") + std::to_string(lastFPS) + std::string(" FPS")).c_str());
             updateTitle = false;
         }
         
@@ -119,7 +121,7 @@ void graphics::Window::run() {
         ++fps;
         auto end_time = clock.now();
         auto difference = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
-        if(difference.count() > 0) std::this_thread::sleep_for(std::chrono::microseconds(1000000 / 60) - difference);
+        if(difference.count() > 0) std::this_thread::sleep_for(std::chrono::microseconds(1000000 / 60 - 588) - difference);
     }
 }
 

@@ -78,6 +78,7 @@ namespace graphics {
         
         inline void resetModelView() { modelview = maths::diagonal<4>(1); }
         inline void applyTransformation(maths::Matrix<4, 4> transformation) { modelview = modelview * transformation; }
+        inline maths::Matrix<4, 4> getTransformation() { return modelview; }
         
         void render(Shader *shader);
     };

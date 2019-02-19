@@ -55,12 +55,12 @@ mat4 perspective = mat4(S, 0, 0, 0,
 void main() {
     col = color;
     
-    /**float t = time / 5.0f;
-    float r = 1.0f * noise(vec3(vert.xz / 20.0f, t));
-    float g = 1.0f * noise(vec3(vert.xy / 20.0f, t));
-    float b = 1.0f * noise(vec3(vert.yz / 20.0f, t));
-
-    col = vec3(r, g, b);*/
+    /*float t = time / 5.0f;
+    float r = 5.0f * noise(vec3(vert.xz / 20.0f, t));
+    float g = 5.0f * noise(vec3(vert.xy / 20.0f, t));
+    float b = 5.0f * noise(vec3(vert.yz / 20.0f, t));*/
+    
+    //col = vec3(r, g, b);
     //position = perspective * (vec4(0, 0, -1.5, 0) + (rotate_y(angle_y) * rotate_z(-angle_x * sin(angle_y)) * rotate_x(angle_x * cos(angle_y))) * (vec4(vert, 1.0) - vec4(pos, 0)));
     
     vec4 curpos = vec4(vert, 1.0) - vec4(pos, 0.0);

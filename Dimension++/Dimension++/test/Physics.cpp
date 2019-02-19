@@ -16,6 +16,7 @@ static const uint8_t *keys;
 float vel = 0.0f;
 float acc = 0.00981f;
 static float box_y = -5;
+static float curtime = 0.0f;
 
 static void eventHandler(SDL_Event e) {
     if(e.type == SDL_MOUSEMOTION) {
@@ -44,29 +45,30 @@ void test::physics::render() {
     shader->bind();
     shader->uniformf("angle_x", angle_x);
     shader->uniformf("angle_y", angle_y);
-    shader->uniformf("time", 0);
+    shader->uniformf("time", curtime);
     shader->uniformf("pos", x, y, z);
     
     const_shader->bind();
     const_shader->uniformf("angle_x", angle_x);
     const_shader->uniformf("angle_y", angle_y);
-    const_shader->uniformf("time", 0);
+    const_shader->uniformf("time", curtime += 0.02f);
     const_shader->uniformf("pos", x, y, z);
 
-    //bouncybox->applyTransformation(maths::translate3(0.01, 0, 0));
+    bouncybox->applyTransformation(maths::translate3(0.01, 0, 0));
     if(box_y >= 0) {
-        vel *= -0.95;
+        box_y = 0;
+        vel *= -0.5;
         box_y += vel;
-        bouncybox->resetModelView();
-        bouncybox->applyTransformation(maths::translate3(0, 5, 0));
+        //bouncybox->resetModelView();
+        bouncybox->applyTransformation(maths::translate3(0, -bouncybox->getTransformation()(1, 3) + 5, 0));
     } else {
         bouncybox->applyTransformation(maths::translate3(0, vel, 0));
         box_y += vel;
         vel += acc;
     }
     
-    bouncybox->render(shader);
-    floorbox->render(const_shader);
+    shader->bind(); bouncybox->render(shader);
+    const_shader->bind(); floorbox->render(const_shader);
     
     float speed = 0.2f;
     if(keys[SDL_SCANCODE_W]) {
