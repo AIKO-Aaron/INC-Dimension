@@ -45,10 +45,10 @@ void main() {
     vert_coords = (modelview * vec4(vert, 1)).xyz;
     viewpos = pos;
     
-    mat4 tran = perspective * modelview * (rotate_x(angle_x) * rotate_y(angle_y));
-    normal = (inverse(tran) * vec4(norm, 1)).xyz;
+    normal = normalize((vec4(norm, 1)).xyz);
 
     vec4 curpos = vec4(vert, 1.0) - vec4(pos, 0.0) + vec4(0, n, 0, 0);
+    mat4 tran = perspective * modelview * (rotate_x(angle_x) * rotate_y(angle_y));
     position = tran * curpos;
     
     

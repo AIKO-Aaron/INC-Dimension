@@ -93,9 +93,9 @@ graphics::Box::Box(float x, float y, float z, float w, float h, float d, Texture
     verts[23] = { x + w, y + h, z, 0, 1 };
     
     for(int i = 0; i < 24; i++) {
-        maths::Vector<3> a = maths::Vector<3>((float*) &verts[(i / 4)]);
-        maths::Vector<3> b = maths::Vector<3>((float*) &verts[(i / 4) + 1]);
-        maths::Vector<3> c = maths::Vector<3>((float*) &verts[(i / 4) + 2]);
+        maths::Vector<3> a = maths::Vector<3>((float*) &verts[4 * (int) (i / 4)]);
+        maths::Vector<3> b = maths::Vector<3>((float*) &verts[4 * (int) (i / 4) + 1]);
+        maths::Vector<3> c = maths::Vector<3>((float*) &verts[4 * (int) (i / 4) + 2]);
         
         maths::Vector<3> normal = maths::cross(b - a, c - a);
         verts[i].nx = normal[0];

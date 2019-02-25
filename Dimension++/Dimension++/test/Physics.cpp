@@ -29,9 +29,9 @@ static void eventHandler(SDL_Event e) {
 
 void test::physics::init(graphics::Window *window) {
     graphics::Texture *texture = new graphics::Texture("assets/textures/cube/water.png");
-    bouncybox = new graphics::Box(5, box_y, -4, 2, 2, 2, texture);
-    floorbox = new graphics::Box(-100, 2, -100, 200, 1, 200, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF);
-    lightbox = new graphics::Box(0 - 0.05f, -6 - 0.05f, -3 - 0.05f, 0.1f, 0.1f, 0.1f, 0xFFFF00FF, 0xFFFF00FF, 0xFFFF00FF);
+    bouncybox = new graphics::Box(2, box_y, -4, 2, 2, 2, texture);
+    floorbox = new graphics::Box(-100, 2, -100, 200, 1, 200, texture);
+    lightbox = new graphics::Box(0 - 0.05f, -6 - 0.05f, -0 - 0.05f, 0.1f, 0.1f, 0.1f, 0xFFFF00FF, 0xFFFF00FF, 0xFFFF00FF);
     shader = graphics::loadFromFiles("assets/shaders/test_light.vert", "assets/shaders/test_light.frag");
     const_shader = graphics::loadFromFiles("assets/shaders/test.vert", "assets/shaders/test.frag");
     window->addEventHandler(eventHandler);
@@ -39,17 +39,15 @@ void test::physics::init(graphics::Window *window) {
     shader->bind();
     shader->uniformf("mat.shininess", 256.0f);
     
-    shader->uniformf("light.position", 0, -6, -3);
-    shader->uniformf("light.color", 1, 0, 1, 1);
-    shader->uniformf("light.attenuation", 1.0f, 0.0045f, 0.0075f);
+    shader->uniformf("light.position", 0, -6, -0);
+    shader->uniformf("light.attenuation", 1.0f, 0.00045f, 0.00075f);
     shader->uniformf("light.ambient", 0.05f);
     shader->uniformf("light.diffuse", 0.8f);
     shader->uniformf("light.specular", 0.5f);
     
     shader->uniformf("skyLight.direction", -0.2f, -1, 0.3f);
-    shader->uniformf("skyLight.color", 1, 1, 1, 1);
-    shader->uniformf("skyLight.ambient", 0.05f);
-    shader->uniformf("skyLight.diffuse", 0.4f);
+    shader->uniformf("skyLight.ambient", 0.2f);
+    shader->uniformf("skyLight.diffuse", 0.1f);
     shader->uniformf("skyLight.specular", 0.5f);
 
     SDL_CaptureMouse(SDL_TRUE);
@@ -81,7 +79,7 @@ void test::physics::render() {
     } else {
         bouncybox->applyTransformation(maths::translate3(0, vel, 0));
         box_y += vel;
-        //vel += acc;
+        vel += acc;
     }
     
     shader->bind(); bouncybox->render(shader); floorbox->render(shader);
