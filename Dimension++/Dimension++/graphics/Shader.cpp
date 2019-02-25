@@ -49,7 +49,7 @@ graphics::Shader::Shader(const char *vertSrc, const char *fragSrc) {
     glGetProgramiv(shaderID, GL_LINK_STATUS, &status);
     if(status != GL_TRUE) {
         printf("[ERROR] Couldn't link shader:\n");
-        glGetProgramiv(fid, GL_INFO_LOG_LENGTH, &status);
+        glGetProgramiv(shaderID, GL_INFO_LOG_LENGTH, &status);
         char* errorlog = (char*) malloc(status + 1);
         glGetProgramInfoLog(shaderID, status, &status, errorlog);
         printf("%s\n", errorlog);

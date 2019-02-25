@@ -29,18 +29,18 @@ namespace maths {
         float dot(Vector<D> other);
         inline float operator *(Vector<D> other) { return dot(other); }
         
-        inline Vector<D> operator +(Vector<D> other) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] + other[i]; return result; }
-        inline Vector<D> operator -(Vector<D> other) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] - other[i]; return result; }
+        inline Vector<D> operator +(Vector<D> other) { Vector<D> result; for(int i = 0; i < D; i++) result[i] = values[i] + other[i]; return result; }
+        inline Vector<D> operator -(Vector<D> other) { Vector<D> result; for(int i = 0; i < D; i++) result[i] = values[i] - other[i]; return result; }
         inline Vector<D> operator +=(Vector<D> other) { for(int i = 0; i < D; i++) values[i] += other[i]; return *this; }
         inline Vector<D> operator -=(Vector<D> other) { for(int i = 0; i < D; i++) values[i] -= other[i]; return *this; }
 
-        inline Vector<D> operator *(float scalar) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] * scalar; return result; }
-        inline Vector<D> operator /(float scalar) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] / scalar; return result; }
+        inline Vector<D> operator *(float scalar) { Vector<D> result; for(int i = 0; i < D; i++) result[i] = values[i] * scalar; return result; }
+        inline Vector<D> operator /(float scalar) { Vector<D> result; for(int i = 0; i < D; i++) result[i] = values[i] / scalar; return result; }
         inline Vector<D> operator *=(float scalar) { for(int i = 0; i < D; i++) values[i] *= scalar; return *this; }
         inline Vector<D> operator /=(float scalar) { for(int i = 0; i < D; i++) values[i] /= scalar; return *this; }
 
-        inline Vector<D> operator +(float vec) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] + vec; return result; }
-        inline Vector<D> operator -(float vec) { Vector<D> result(0); for(int i = 0; i < D; i++) result[i] = values[i] - vec; return result; }
+        inline Vector<D> operator +(float vec) { Vector<D> result; for(int i = 0; i < D; i++) result[i] = values[i] + vec; return result; }
+        inline Vector<D> operator -(float vec) { Vector<D> result; for(int i = 0; i < D; i++) result[i] = values[i] - vec; return result; }
         inline Vector<D> operator +=(float vec) { for(int i = 0; i < D; i++) values[i] += vec; return *this; }
         inline Vector<D> operator -=(float vec) { for(int i = 0; i < D; i++) values[i] -= vec; return *this; }
     };
@@ -68,5 +68,12 @@ float maths::Vector<D>::dot(Vector<D> other) {
     return result;
 }
 
+namespace maths {
+ 
+    static maths::Vector<3> cross(Vector<3> a, Vector<3> b) {
+        return maths::Vector<3>(new float[3]{ a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0] });
+    }
+    
+}
 
 #endif /* Vector_hpp */

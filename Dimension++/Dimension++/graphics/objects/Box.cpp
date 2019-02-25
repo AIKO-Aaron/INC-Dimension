@@ -60,64 +60,52 @@ graphics::Box::Box(float x, float y, float z, float w, float h, float d, Texture
     glGenBuffers(1, &iboID); // The indicies (When which point)
     glGenVertexArrays(1, &vaoID);
     
-    verticies = new GLfloat[5 * 24] {
-        x + 0, y + 0, z + 0,
-        0, 0,
-        x + w, y + 0, z + 0,
-        1, 0,
-        x + w, y + h, z + 0,
-        1, 1,
-        x + 0, y + h, z + 0,
-        0, 1,
+    vertexAttribs *verts = new vertexAttribs[24];
+    
+    verts[0] = { x, y, z, 0, 0 };
+    verts[1] = { x + w, y, z, 1, 0 };
+    verts[2] = { x + w, y + h, z, 1, 1 };
+    verts[3] = { x, y + h, z, 0, 1 };
+    
+    verts[4] = { x, y, z + d, 0, 0 };
+    verts[5] = { x, y + h, z + d, 1, 0 };
+    verts[6] = { x + w, y + h, z + d, 1, 1 };
+    verts[7] = { x + w, y, z + d, 0, 1 };
+    
+    verts[8]  = { x, y, z, 0, 0 };
+    verts[9]  = { x, y, z + d, 1, 0 };
+    verts[10] = { x + w, y, z + d, 1, 1 };
+    verts[11] = { x + w, y, z, 0, 1 };
+
+    verts[12] = { x, y + h, z, 0, 0 };
+    verts[13] = { x + w, y + h, z, 1, 0 };
+    verts[14] = { x + w, y + h, z + d, 1, 1 };
+    verts[15] = { x, y + h, z + d, 0, 1, };
+
+    verts[16] = { x, y, z, 0, 0 };
+    verts[17] = { x, y + h, z, 1, 0 };
+    verts[18] = { x, y + h, z + d, 1, 1 };
+    verts[19] = { x, y, z + d, 0, 1 };
+
+    verts[20] = { x + w, y, z, 0, 0 };
+    verts[21] = { x + w, y, z + d, 1, 0 };
+    verts[22] = { x + w, y + h, z + d, 1, 1 };
+    verts[23] = { x + w, y + h, z, 0, 1 };
+    
+    for(int i = 0; i < 24; i++) {
+        maths::Vector<3> a = maths::Vector<3>((float*) &verts[(i / 4)]);
+        maths::Vector<3> b = maths::Vector<3>((float*) &verts[(i / 4) + 1]);
+        maths::Vector<3> c = maths::Vector<3>((float*) &verts[(i / 4) + 2]);
         
-        x + 0, y + 0, z + d,
-        0, 0,
-        x + w, y + 0, z + d,
-        1, 0,
-        x + w, y + h, z + d,
-        1, 1,
-        x + 0, y + h, z + d,
-        0, 1,
+        maths::Vector<3> normal = maths::cross(b - a, c - a);
+        verts[i].nx = normal[0];
+        verts[i].ny = normal[1];
+        verts[i].nz = normal[2];
+    }
 
-        x + 0, y + 0, z + 0,
-        0, 0,
-        x + 0, y + 0, z + d,
-        1, 0,
-        x + w, y + 0, z + d,
-        1, 1,
-        x + w, y + 0, z + 0,
-        0, 1,
-
-        x + 0, y + h, z + 0,
-        0, 0,
-        x + 0, y + h, z + d,
-        1, 0,
-        x + w, y + h, z + d,
-        1, 1,
-        x + w, y + h, z + 0,
-        0, 1,
-
-        x + 0, y + 0, z + 0,
-        0, 0,
-        x + 0, y + 0, z + d,
-        1, 0,
-        x + 0, y + h, z + d,
-        1, 1,
-        x + 0, y + h, z + 0,
-        0, 1,
-
-        x + w, y + 0, z + 0,
-        0, 0,
-        x + w, y + 0, z + d,
-        1, 0,
-        x + w, y + h, z + d,
-        1, 1,
-        x + w, y + h, z + 0,
-        0, 1,
-    };
     
     glBindBuffer(GL_ARRAY_BUFFER, vboID);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat) * 5 * 24, verticies, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertexAttribs) * 24, verts, GL_STATIC_DRAW);
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36, textures_indicies, GL_STATIC_DRAW);
@@ -126,11 +114,13 @@ graphics::Box::Box(float x, float y, float z, float w, float h, float d, Texture
     
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
-    
+    glEnableVertexAttribArray(2);
+
     glBindBuffer(GL_ARRAY_BUFFER, vboID);
-    glVertexAttribPointer(0, 3, GL_FLOAT, false, 5 * sizeof(GLfloat), 0); // Screen coords
-    glVertexAttribPointer(1, 2, GL_FLOAT, false, 5 * sizeof(GLfloat), (void*) (3 * sizeof(GLfloat))); // UV-coords
-    
+    glVertexAttribPointer(0, 3, GL_FLOAT, false, sizeof(vertexAttribs), 0); // Screen coords
+    glVertexAttribPointer(1, 2, GL_FLOAT, false, sizeof(vertexAttribs), (void*) (3 * sizeof(GLfloat))); // UV-coords
+    glVertexAttribPointer(2, 3, GL_FLOAT, false, sizeof(vertexAttribs), (void*) (5 * sizeof(GLfloat))); // Normal vectors
+
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, iboID);
     glBindVertexArray(0);
 }

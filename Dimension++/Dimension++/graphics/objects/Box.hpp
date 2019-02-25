@@ -20,6 +20,15 @@
 #include "../../maths/Matrix.hpp"
 
 namespace graphics {
+    
+#pragma pack(push, 1)
+    typedef struct {
+        float x, y, z; // Position of vertex
+        float u, v; // UV coords for textures
+        float nx, ny, nz; // Normal vector
+    } vertexAttribs;
+#pragma pack(pop)
+    
     static const uint8_t *indicies = new uint8_t[36] {
         0, 1, 2,
         2, 3, 0,

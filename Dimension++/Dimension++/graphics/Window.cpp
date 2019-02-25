@@ -54,7 +54,9 @@ void graphics::Window::createContext() {
     glDepthFunc(GL_LESS);
     glEnable(GL_MULTISAMPLE);
     
-    glCullFace(GL_BACK);
+    // glEnable(GL_CULL_FACE);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 graphics::Window::Window(gameRender func) : renderFunc(func) {
@@ -77,7 +79,6 @@ uint32_t graphics::second_callback(uint32_t, void *params) {
 void graphics::Window::run() {
     running = true;
     SDL_Event e;
-    
     
     SDL_AddTimer(1000, second_callback, this);
     std::chrono::high_resolution_clock clock = std::chrono::high_resolution_clock(); // Create high accuracy clock

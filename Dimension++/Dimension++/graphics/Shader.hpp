@@ -31,6 +31,7 @@ namespace graphics {
         
         inline void uniformf(const char* name, float value) { glUniform1f(glGetUniformLocation(shaderID, name), value); }
         inline void uniformf(const char* name, float a, float b, float c) { glUniform3f(glGetUniformLocation(shaderID, name), a, b, c); }
+        inline void uniformf(const char* name, float a, float b, float c, float d) { glUniform4f(glGetUniformLocation(shaderID, name), a, b, c, d); }
         inline void uniformi(const char* name, int value) { glUniform1i(glGetUniformLocation(shaderID, name), value); }
         inline void uniformMatrix4(const char* name, maths::Matrix<4, 4> matrix) { glUniformMatrix4fv(glGetUniformLocation(shaderID, name), 1, true, matrix.values); }
     };
